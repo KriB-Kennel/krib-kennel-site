@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>KriB Kennel | Venta • Hospedaje • Training • Grooming</title>
+  <meta name="description" content="KriB Kennel en Guaynabo: venta de perros, hospedaje, entrenamiento y grooming. Horario 9am–6pm." />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="KriB Kennel Inicio">
+        <span class="brand-mark">K</span>
+        <span class="brand-text">KriB Kennel</span>
+      </a>
+
+      <nav class="links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#venta">Venta de perros</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto" class="btn small">Contactar</a>
+      </nav>
+
+      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile" id="mobileNav" hidden>
+      <a href="#servicios">Servicios</a>
+      <a href="#venta">Venta de perros</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="#contacto" class="btn">Contactar</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="container hero">
+      <div class="hero-card glass">
+        <div class="pill">Guaynabo • 9:00 AM – 6:00 PM</div>
+        <h1>Venta de perros, hospedaje, training y grooming con un enfoque claro y profesional.</h1>
+        <p class="lead">
+          Te ayudamos a elegir el perro ideal, mejorar conducta y obediencia, mantener higiene y ofrecer estadía segura.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="tel:+17873830494">Llamar 787-383-0494</a>
+          <a class="btn ghost" href="https://wa.me/17873830494" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-n">Training</div>
+            <div class="stat-t">Obediencia y conducta</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">Grooming</div>
+            <div class="stat-t">Baño y cuidado</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">Hospedaje</div>
+            <div class="stat-t">Estadía y rutina</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side glass">
+        <div class="media">
+          <!-- Sube una foto real a assets/img/hero.jpg -->
+          <img src="assets/img/hero.jpg" alt="Perros en entorno real de servicio" onerror="this.style.display='none'">
+          <div class="media-fallback">
+            <div class="dot"></div>
+            <div>
+              <strong>Foto principal:</strong> sube <code>assets/img/hero.jpg</code> para completar el hero.
+            </div>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="trust-item">Atención directa con Rafael Perez</div>
+          <div class="trust-item">Proceso simple y transparente</div>
+          <div class="trust-item">Recomendaciones y seguimiento</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="container section" id="servicios">
+      <div class="section-head">
+        <h2>Servicios</h2>
+        <p>Todo en un solo lugar: venta, estadía, entrenamiento y grooming.</p>
+      </div>
+
+      <div class="grid3">
+        <article class="card glass">
+          <h3>Training</h3>
+          <p>Obediencia, control en paseo y enfoque por objetivos. Plan práctico para casa.</p>
+          <ul class="bullets">
+            <li>Evaluación inicial</li>
+            <li>Rutina y seguimiento</li>
+            <li>Sesiones 1:1</li>
+          </ul>
+        </article>
+
+        <article class="card glass">
+          <h3>Hospedaje</h3>
+          <p>Estadía segura con estructura, horarios y manejo responsable durante la visita.</p>
+          <ul class="bullets">
+            <li>Ingreso con reglas claras</li>
+            <li>Rutina diaria</li>
+            <li>Actualizaciones según acuerdo</li>
+          </ul>
+        </article>
+
+        <article class="card glass">
+          <h3>Grooming</h3>
+          <p>Cuidado y mantenimiento para que tu perro se vea y se sienta bien.</p>
+          <ul class="bullets">
+            <li>Baño y secado</li>
+            <li>Cuidado básico</li>
+            <li>Orientación de mantenimiento</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- VENTA -->
+    <section class="container section" id="venta">
+      <div class="section-head">
+        <h2>Venta de perros</h2>
+        <p>Orientación para elegir el perro ideal y recomendaciones de manejo desde el día uno.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card glass">
+          <h3>Disponibilidad</h3>
+          <p>Consulta por camadas, edades y requisitos. Te guiamos según tu estilo de vida.</p>
+          <div class="mini-row">
+            <a class="btn small" href="https://wa.me/17873830494" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card glass">
+          <h3>Recomendaciones</h3>
+          <p>Si compras con nosotros, puedes añadir orientación inicial (rutina, límites y obediencia básica).</p>
+          <div class="mini-row">
+            <a class="btn ghost small" href="#contacto">Solicitar orientación</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="container section" id="como">
+      <div class="section-head">
+        <h2>Cómo funciona</h2>
+        <p>Un proceso directo para coordinar servicios.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step glass"><span>1</span><div><h3>Contacto</h3><p>Llamada o WhatsApp con lo que necesitas: venta, hospedaje, training o grooming.</p></div></div>
+        <div class="step glass"><span>2</span><div><h3>Confirmación</h3><p>Validamos disponibilidad, detalles y condiciones del servicio.</p></div></div>
+        <div class="step glass"><span>3</span><div><h3>Servicio</h3><p>Se ejecuta el servicio con estructura y comunicación clara.</p></div></div>
+        <div class="step glass"><span>4</span><div><h3>Seguimiento</h3><p>Recomendaciones finales y próximos pasos si aplica.</p></div></div>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="container section" id="precios">
+      <div class="section-head">
+        <h2>Precios</h2>
+        <p>Se cotiza según el servicio y necesidades. Escríbenos y te damos detalles.</p>
+      </div>
+
+      <div class="grid3">
+        <article class="price glass">
+          <h3>Training</h3>
+          <div class="price-tag">Cotización</div>
+          <p>Según objetivos y sesiones.</p>
+          <a class="btn w100" href="https://wa.me/17873830494" target="_blank" rel="noopener">Cotizar</a>
+        </article>
+
+        <article class="price glass featured">
+          <h3>Hospedaje</h3>
+          <div class="price-tag">Cotización</div>
+          <p>Según fechas y rutina.</p>
+          <a class="btn w100" href="https://wa.me/17873830494" target="_blank" rel="noopener">Ver disponibilidad</a>
+        </article>
+
+        <article class="price glass">
+          <h3>Grooming</h3>
+          <div class="price-tag">Cotización</div>
+          <p>Según tamaño y servicio.</p>
+          <a class="btn w100" href="https://wa.me/17873830494" target="_blank" rel="noopener">Coordinar</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="container section" id="contacto">
+      <div class="contact glass">
+        <div>
+          <h2>Contacto</h2>
+          <p><strong>Guaynabo</strong> • 9:00 AM – 6:00 PM</p>
+
+          <div class="contact-cards">
+            <a class="mini glass" href="tel:+17873830494">
+              <strong>Llamada</strong><span>787-383-0494</span>
+            </a>
+            <a class="mini glass" href="https://wa.me/17873830494" target="_blank" rel="noopener">
+              <strong>WhatsApp</strong><span>Respuesta rápida</span>
+            </a>
+            <a class="mini glass" href="mailto:kribkennels@gmail.com">
+              <strong>Email</strong><span>kribkennels@gmail.com</span>
+            </a>
+          </div>
+
+          <p class="note">
+            Si tienes enlace de Google Maps, lo coloco aquí en un botón y un mapa embebido.
+          </p>
+        </div>
+
+        <form class="form glass" action="#" method="post" onsubmit="return false;">
+          <label>Nombre<input required placeholder="Tu nombre" /></label>
+          <label>Teléfono<input required placeholder="(###) ###-####" /></label>
+          <label>Servicio<textarea rows="4" placeholder="Venta, hospedaje, training o grooming. Describe tu caso."></textarea></label>
+          <button class="btn w100" type="submit">Enviar (demo)</button>
+          <p class="tiny">Si quieres que el formulario funcione real en GitHub Pages, lo conectamos a Formspree.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container foot">
+      <div>© <span id="y"></span> KriB Kennel</div>
+      <div class="muted">Guaynabo • 787-383-0494</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
