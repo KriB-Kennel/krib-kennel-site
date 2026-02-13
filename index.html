@@ -133,13 +133,13 @@
     const tel1Clean = SITE.contact?.phone1E164 || ""; // opcional: +1787...
     const tel2Clean = SITE.contact?.phone2E164 || "";
 
-    safeHref($("btnCall"), `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
+if ($("btnCall")) safeHref($("btnCall"), `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
     safeHref($("sCall"),  `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
 
     const wa = SITE.contact?.whatsappE164 || ""; // 1787...
     const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hola, necesito información.");
     const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
-    safeHref($("btnWhats"), waLink);
+if ($("btnWhats")) safeHref($("btnWhats"), waLink);
     safeHref($("sWhats"), waLink);
     safeHref($("lineWhats"), waLink);
 
