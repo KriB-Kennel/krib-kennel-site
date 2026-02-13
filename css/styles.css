@@ -6,8 +6,7 @@
   --stroke2: rgba(255,255,255,.18);
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.66);
-  --accent: #2f7dff;     /* azul */
-  --accent2:#6aa6ff;
+  --accent:#2f7dff;
   --shadow: 0 18px 60px rgba(0,0,0,.45);
   --r: 22px;
 }
@@ -45,45 +44,50 @@ body{
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* ===== TOPBAR ===== */
 .topbar{
-  position:sticky; top:0; z-index:10;
-  background: rgba(7,11,20,.55);
+  position:sticky; top:0;
+  z-index:50;
+  background: rgba(7,11,20,.62);
   border-bottom: 1px solid rgba(255,255,255,.08);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 14px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap:14px;
+  padding: 12px 0;
 }
 
-.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
-.brand-mark{
-  width:38px; height:38px; display:grid; place-items:center;
-  border-radius: 14px;
-  background: radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.25), rgba(255,255,255,.08));
-  border:1px solid var(--stroke2);
-  font-weight:800;
+.links{
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
-.brand-text{ font-weight:800; letter-spacing:.2px; }
-
-.links{ display:flex; align-items:center; gap:16px; }
-.links a{ color:var(--muted); text-decoration:none; font-weight:600; font-size:14px; }
+.links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
 .links a:hover{ color:var(--text); }
 
 .btn{
-  display:inline-flex; align-items:center; justify-content:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding: 12px 16px;
   border-radius: 999px;
   border:1px solid rgba(255,255,255,.14);
   background: linear-gradient(180deg, rgba(47,125,255,.95), rgba(47,125,255,.72));
   color:#071023;
-  font-weight:800;
+  font-weight:900;
   text-decoration:none;
   box-shadow: 0 10px 30px rgba(47,125,255,.18);
 }
-.btn:hover{ transform: translateY(-1px); }
 .btn.small{ padding:10px 14px; font-size:14px; }
 .btn.ghost{
   background: rgba(255,255,255,.06);
@@ -93,18 +97,62 @@ body{
 }
 .w100{ width:100%; }
 
+/* hamburger */
+.menu{
+  width:44px; height:44px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  display:none; /* solo móvil */
+}
+.menu span{
+  display:block;
+  height:2px;
+  margin:6px 10px;
+  background: rgba(255,255,255,.78);
+  border-radius:2px;
+}
 
+/* dropdown móvil */
+.mobile{
+  width:min(1120px, 92vw);
+  margin: 10px auto 12px;
+  padding: 12px;
+  display:none; /* solo móvil */
+  gap:10px;
+}
+.mobile a{
+  padding:12px 14px;
+  border-radius:16px;
+  text-decoration:none;
+  color: rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  font-weight:800;
+}
 
+/* ===== LOGO TOP ===== */
+.logo-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding: 18px 0 10px;
+}
+.main-logo{
+  width: 210px;
+  max-width: 72vw;
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 12px 36px rgba(0,0,0,.55));
+}
 
-
-
+/* ===== HERO ===== */
 .hero{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
   gap:18px;
-  padding: 22px 0 8px;
+  padding: 18px 0 8px;
 }
-
 .hero-card{ padding:22px; }
 .pill{
   display:inline-flex;
@@ -113,18 +161,21 @@ body{
   border:1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.04);
   color: var(--muted);
-  font-weight:700;
+  font-weight:800;
   font-size:13px;
 }
-
 h1{
   margin:14px 0 10px;
   font-size: clamp(30px, 3.4vw, 52px);
   line-height: 1.06;
   letter-spacing: -.4px;
 }
-
-.lead{ color: var(--muted); font-size:16px; line-height:1.6; max-width: 60ch; }
+.lead{
+  color: var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width: 60ch;
+}
 
 .cta{ display:flex; gap:12px; margin-top: 14px; flex-wrap:wrap; }
 
@@ -138,7 +189,7 @@ h1{
   background: rgba(255,255,255,.04);
 }
 .stat-n{ font-weight:900; }
-.stat-t{ color:var(--muted); font-weight:600; font-size:13px; margin-top:2px; }
+.stat-t{ color:var(--muted); font-weight:700; font-size:13px; margin-top:2px; }
 
 .hero-side{ padding:16px; display:grid; gap:12px; align-content:start; }
 .media{
@@ -155,7 +206,7 @@ h1{
   display:flex; gap:10px; align-items:flex-start;
   padding:14px;
   color:var(--muted);
-  font-weight:600;
+  font-weight:700;
 }
 .dot{
   width:10px; height:10px; border-radius:999px;
@@ -170,9 +221,10 @@ h1{
   border:1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.04);
   color:var(--muted);
-  font-weight:700;
+  font-weight:800;
 }
 
+/* ===== SECTIONS ===== */
 .section{ padding: 34px 0; }
 .section-head{ margin-bottom: 14px; }
 .section-head h2{ margin:0; font-size:28px; letter-spacing:-.3px; }
@@ -221,11 +273,18 @@ h1{
   padding:16px;
 }
 .contact-cards{ display:grid; gap:10px; margin:12px 0; }
-.mini{ display:flex; flex-direction:column; gap:2px; padding:12px 14px; text-decoration:none; color:var(--text); }
-.mini span{ color:var(--muted); font-weight:600; }
+.mini{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:12px 14px;
+  text-decoration:none;
+  color:var(--text);
+}
+.mini span{ color:var(--muted); font-weight:700; }
 
 .form{ padding:14px; display:grid; gap:10px; }
-label{ display:grid; gap:6px; font-weight:700; color:var(--muted); }
+label{ display:grid; gap:6px; font-weight:800; color:var(--muted); }
 input, textarea{
   padding:12px 12px;
   border-radius: 16px;
@@ -243,195 +302,19 @@ input:focus, textarea:focus{ border-color: rgba(47,125,255,.55); }
 
 .mini-row{ margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap; }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 940px){
   .hero{ grid-template-columns: 1fr; }
   .grid3{ grid-template-columns: 1fr; }
   .grid2{ grid-template-columns: 1fr; }
   .contact{ grid-template-columns: 1fr; }
-}
-<body>
-  <div class="bg"></div>
 
-  <div class="logo-wrap">
-    <img src="logo.png" alt="KriB Kennel Logo" class="main-logo">
-  </div>
-
-  <header class="topbar">
-    <div class="container nav">
-      <nav class="links" aria-label="Navegación principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#venta">Venta de perros</a>
-        <a href="#como">Cómo funciona</a>
-        <a href="#precios">Precios</a>
-        <a href="#contacto" class="btn small">Contactar</a>
-      </nav>
-
-      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile" id="mobileNav" hidden>
-      <a href="#servicios">Servicios</a>
-      <a href="#venta">Venta de perros</a>
-      <a href="#como">Cómo funciona</a>
-      <a href="#precios">Precios</a>
-      <a href="#contacto" class="btn">Contactar</a>
-    </div>
-  </header>
-/* ===== LOGO TOP ===== */
-.logo-wrap{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  padding: 18px 0 6px;
-}
-
-.main-logo{
-  width: 190px;      /* tamaño desktop */
-  max-width: 70vw;   /* responsive */
-  height: auto;
-  display:block;
-  margin: 0 auto;
-  filter: drop-shadow(0 10px 28px rgba(0,0,0,.55));
-}
-
-/* ===== TOPBAR: aseguramos que el menu se vea ===== */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end; /* menu hacia la derecha como navbar limpia */
-  gap:14px;
-  padding: 12px 0;
-}
-
-/* En desktop, el menu debe verse */
-.links{
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-/* En móvil, ocultamos links y mostramos botón hamburguesa */
-@media (max-width: 940px){
+  /* móvil: menú hamburguesa + dropdown */
   .links{ display:none; }
   .menu{ display:block; }
-  .main-logo{ width: 160px; }
-}
-/* ===== MENU SIMPLE PARA MOVIL (sin duplicados) ===== */
-@media (max-width: 940px){
-
-  /* no ocultar el menu */
-  .links{ 
-    display:flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  /* centramos el nav */
-  .nav{
-    justify-content: center !important;
-    padding: 10px 0 !important;
-  }
-
-  /* si el botón hamburguesa todavía existe, lo ocultamos */
-  .menu{
-    display:none !important;
-  }
-
-  /* links más compactos */
-  .links a{
-    font-size: 14px;
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.10);
-  }
-
-  /* el botón Contactar se queda “premium” */
-  .links a.btn{
-    background: linear-gradient(180deg, rgba(47,125,255,.95), rgba(47,125,255,.72));
-    border: 1px solid rgba(255,255,255,.14);
-    color: #071023;
-  }
-}
-/* ===== NAV: limpio otra vez ===== */
-.brand-mini{
-  display:none;
-  text-decoration:none;
-  color: rgba(255,255,255,.86);
-  font-weight: 800;
-  letter-spacing: .2px;
+  .mobile{ display:grid; }
+  .main-logo{ width: 180px; }
 }
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  padding: 12px 0;
-}
-
-/* Desktop: menú normal */
-.links{
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-/* Mobile dropdown (oculto por defecto) */
-.mobile{
-  width:min(1120px, 92vw);
-  margin: 10px auto 12px;
-  padding: 12px;
-  display:grid;
-  gap:10px;
-}
-.mobile a{
-  padding:12px 14px;
-  border-radius: 16px;
-  text-decoration:none;
-  color: rgba(255,255,255,.92);
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.05);
-  font-weight: 700;
-}
-
-/* Logo: tamaño más premium (no tan pequeño, no tan grande) */
-.logo-wrap{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  padding: 18px 0 10px;
-}
-.main-logo{
-  width: 210px;
-  max-width: 72vw;
-  height:auto;
-  display:block;
-  margin: 0 auto;
-  filter: drop-shadow(0 12px 36px rgba(0,0,0,.55));
-}
-
-/* ===== Breakpoint móvil: escondemos links y usamos hamburguesa ===== */
-@media (max-width: 940px){
-  .brand-mini{ display:block; }
-  .links{ display:none; }
-  .menu{ display:block; }
-}
-
-/* Desktop: ocultamos hamburguesa + dropdown */
-@media (min-width: 941px){
-  .menu{ display:none; }
-  .mobile{ display:none !important; }
-}
-
-
-
+/* el dropdown solo debe mostrarse cuando JS le quite hidden */
+#mobileNav[hidden]{ display:none !important; }
