@@ -370,3 +370,34 @@ img{max-width:100%;display:block;height:auto}
   background:linear-gradient(180deg,var(--brand0),var(--brand1));
   color:var(--btnText);
 }
+/* ===== FIX: glass redondos (Plan 1) ===== */
+.card{
+  border-radius: calc(var(--r2) + 6px) !important;
+  overflow: hidden !important;
+}
+
+.section,
+.hero{
+  border-radius: calc(var(--r2) + 6px) !important;
+}
+
+.item,
+.line,
+.mini,
+.photo,
+.map,
+.qr{
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+/* el iframe del mapa también debe respetar el borde */
+.map iframe{
+  border-radius: 14px !important;
+}
+
+/* por si el contenedor del mapa se ve cuadrado */
+.split{
+  border-radius: 18px !important;
+}
+
