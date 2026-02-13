@@ -114,218 +114,223 @@
     <a class="sbtn" id="sWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
   </nav>
 
-  <script src="./config.js"></script>
-  <script>
-    // ===== Helpers =====
-    const $ = (id) => document.getElementById(id);
-    function safeText(el, v){ if(el) el.textContent = v ?? ""; }
-    function safeHref(el, v){ if(el && v) el.href = v; }
-    function safeSrc(el, v){ if(el && v) el.src = v; }
+ <script src="./config.js"></script>
+<script>
+  // ===== Helpers =====
+  const $ = (id) => document.getElementById(id);
+  function safeText(el, v){ if(el) el.textContent = v ?? ""; }
+  function safeHref(el, v){ if(el && v) el.href = v; }
+  function safeSrc(el, v){ if(el && v) el.src = v; }
 
-    // ===== FLAGS =====
-    const F = SITE.flags || {};
+  // ===== FLAGS =====
+  const F = SITE.flags || {};
 
-    // ===== Apply CSS vars from config =====
-    const root = document.documentElement.style;
-    Object.entries(SITE.colors || {}).forEach(([k,v]) => root.setProperty(`--${k}`, v));
+  // ===== Apply CSS vars from config =====
+  const root = document.documentElement.style;
+  Object.entries(SITE.colors || {}).forEach(([k,v]) => root.setProperty(`--${k}`, v));
 
-    // ===== Title =====
-    document.title = SITE.meta?.title || document.title;
+  // ===== Title =====
+  document.title = SITE.meta?.title || document.title;
 
-    // ===== Header =====
-    safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
-    if ($("logo")) $("logo").alt = SITE.brand || "Logo";
-    safeText($("tagline"), SITE.header?.tagline || "");
+  // ===== Header =====
+  safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
+  if ($("logo")) $("logo").alt = SITE.brand || "Logo";
+  safeText($("tagline"), SITE.header?.tagline || "");
 
-    // ===== Contact links =====
-    const tel1 = SITE.contact?.phone1 || "";
-    const tel2 = SITE.contact?.phone2 || "";
-    const tel1Clean = SITE.contact?.phone1E164 || "";
-    const tel2Clean = SITE.contact?.phone2E164 || "";
+  // ===== Contact links =====
+  const tel1 = SITE.contact?.phone1 || "";
+  const tel2 = SITE.contact?.phone2 || "";
+  const tel1Clean = SITE.contact?.phone1E164 || "";
+  const tel2Clean = SITE.contact?.phone2E164 || "";
 
-    const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
-    const telHref2 = `tel:${tel2Clean || tel2.replace(/[^0-9+]/g,"")}`;
+  const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
+  const telHref2 = `tel:${tel2Clean || tel2.replace(/[^0-9+]/g,"")}`;
 
-    safeHref($("sCall"), telHref1);
-    safeHref($("linePhone1"), telHref1);
+  safeHref($("sCall"), telHref1);
+  safeHref($("linePhone1"), telHref1);
 
-    // WhatsApp
-    const wa = SITE.contact?.whatsappE164 || "";
-    const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hello, I need information.");
-    const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
-    safeHref($("sWhats"), waLink);
-    safeHref($("lineWhats"), waLink);
+  // WhatsApp
+  const wa = SITE.contact?.whatsappE164 || "";
+  const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hello, I need information.");
+  const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
+  safeHref($("sWhats"), waLink);
+  safeHref($("lineWhats"), waLink);
+  safeText($("whatsText"), SITE.contact?.whatsappHint || "WhatsApp");
 
-    safeText($("whatsText"), SITE.contact?.whatsappHint || "WhatsApp");
+  // ===== Hero =====
+  safeText($("kicker"), SITE.hero?.kicker || "");
+  safeText($("heroTitle"), SITE.hero?.title || "");
+  safeText($("heroText"), SITE.hero?.text || "");
+  const heroImg = SITE.assets?.hero || "./assets/hero.jpg";
+  if ($("heroBg")) $("heroBg").style.backgroundImage = `url("${heroImg}")`;
 
-    // ===== Hero =====
-    safeText($("kicker"), SITE.hero?.kicker || "");
-    safeText($("heroTitle"), SITE.hero?.title || "");
-    safeText($("heroText"), SITE.hero?.text || "");
-    const heroImg = SITE.assets?.hero || "./assets/hero.jpg";
-    if ($("heroBg")) $("heroBg").style.backgroundImage = `url("${heroImg}")`;
+  // ===== Language helpers =====
+  function getLang(){
+    return localStorage.getItem("lang") || SITE.defaultLang || "en";
+  }
+  function paintLangButtons(lang){
+    $("langEN")?.classList.toggle("active", lang === "en");
+    $("langES")?.classList.toggle("active", lang === "es");
+  }
+  function t(key){
+    const lang = getLang();
+    return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
+  }
 
-   // ===== Services list (EN/ES) =====
-function renderServices(){
-  // Títulos/lead: vienen del i18n cuando exista
-  safeText($("servicesTitle"), SITE.services?.title || $("servicesTitle")?.textContent || "Services");
-  safeText($("servicesLead"), SITE.services?.lead || $("servicesLead")?.textContent || "");
+  // ===== Services list (EN/ES) =====
+  function renderServices(){
+    const list = $("servicesList");
+    if (!list) return;
 
-  const list = $("servicesList");
-  if (!list) return;
+    const langNow = getLang();
+    const items =
+      SITE.services?.items?.[langNow] ||
+      SITE.services?.items?.en ||
+      SITE.services?.items ||
+      [];
 
-  const langNow = localStorage.getItem("lang") || SITE.defaultLang || "en";
-  const items =
-    SITE.services?.items?.[langNow] ||
-    SITE.services?.items?.en ||
-    SITE.services?.items ||
-    [];
+    list.innerHTML = "";
+    items.forEach((it) => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <div class="it-title">${it.title || ""}</div>
+          <div class="it-desc">${it.desc || ""}</div>
+        </div>`;
+      list.appendChild(div);
+    });
+  }
 
-  list.innerHTML = "";
-  items.forEach((it) => {
-    const div = document.createElement("div");
-    div.className = "item";
-    div.innerHTML = `
-      <div class="dot" aria-hidden="true"></div>
-      <div>
-        <div class="it-title">${it.title || ""}</div>
-        <div class="it-desc">${it.desc || ""}</div>
-      </div>`;
-    list.appendChild(div);
-  });
-}
+  // ===== Photo (flag) =====
+  if (F.showPhoto === false) {
+    if ($("photoWrap")) $("photoWrap").style.display = "none";
+  } else {
+    safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
+    if ($("photo")) $("photo").alt = SITE.brand ? `${SITE.brand} - Photo` : "Photo";
+  }
 
-// Render inicial
-renderServices();
+  // ===== Contact text =====
+  safeText($("contactTitle"), SITE.contactSection?.title || "Contact");
+  safeText($("contactLead"), SITE.contactSection?.lead || "");
+  safeText($("phone1Label"), SITE.contact?.phone1Label || "Phone");
+  safeText($("phone1Text"), tel1 || "");
 
-    }
+  // Phone 2 (flag + has number)
+  if (F.showPhone2 === false || !tel2) {
+    if ($("linePhone2")) $("linePhone2").style.display = "none";
+  } else {
+    safeText($("phone2Label"), SITE.contact?.phone2Label || "Alternate");
+    safeText($("phone2Text"), tel2);
+    safeHref($("linePhone2"), telHref2);
+  }
 
-    // ===== Photo (ONLY flag controls) =====
-    if (F.showPhoto === false) {
-      if ($("photoWrap")) $("photoWrap").style.display = "none";
+  // ===== Map (flag) =====
+  if (F.showMap === false) {
+    if ($("mapMini")) $("mapMini").style.display = "none";
+  } else {
+    const mapEmbed = SITE.map?.embedUrl || "";
+    const mapOpen  = SITE.map?.openUrl || "";
+    if (mapEmbed) {
+      if ($("mapFrame")) $("mapFrame").src = mapEmbed;
+      safeHref($("mapLink"), mapOpen || mapEmbed);
     } else {
-      safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
-      if ($("photo")) $("photo").alt = SITE.brand ? `${SITE.brand} - Photo` : "Photo";
+      if ($("mapFrame")) $("mapFrame").src = "about:blank";
+      if ($("mapLink")) $("mapLink").style.display = "none";
     }
+  }
 
-    // ===== Contact text =====
-    safeText($("contactTitle"), SITE.contactSection?.title || "Contact");
-    safeText($("contactLead"), SITE.contactSection?.lead || "");
+  // ===== Socials (flag) =====
+  const socials = $("socials");
+  if (F.showSocials === false) {
+    if (socials) socials.style.display = "none";
+  } else if (socials) {
+    socials.innerHTML = "";
+    (SITE.socials || []).forEach((s) => {
+      const a = document.createElement("a");
+      a.className = "soc";
+      a.href = s.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = s.label;
+      socials.appendChild(a);
+    });
+    if (!(SITE.socials || []).length) socials.style.display = "none";
+  }
 
-    safeText($("phone1Label"), SITE.contact?.phone1Label || "Phone");
-    safeText($("phone1Text"), tel1 || "");
+  // ===== Sticky (flag) =====
+  if (F.showSticky === false) {
+    const st = document.querySelector(".sticky");
+    if (st) st.style.display = "none";
+  }
 
-    // Phone 2 (flag + has number)
-    if (F.showPhone2 === false || !tel2) {
-      if ($("linePhone2")) $("linePhone2").style.display = "none";
-    } else {
-      safeText($("phone2Label"), SITE.contact?.phone2Label || "Alternate");
-      safeText($("phone2Text"), tel2);
-      safeHref($("linePhone2"), telHref2);
-    }
+  // ===== Footer =====
+  safeText($("footerBrand"), SITE.brand || "");
+  safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
+  safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
+  if ($("year")) $("year").textContent = new Date().getFullYear();
 
-    // ===== Map (flag) =====
-    if (F.showMap === false) {
-      if ($("mapMini")) $("mapMini").style.display = "none";
-    } else {
-      const mapEmbed = SITE.map?.embedUrl || "";
-      const mapOpen  = SITE.map?.openUrl || "";
-      if (mapEmbed) {
-        if ($("mapFrame")) $("mapFrame").src = mapEmbed;
-        safeHref($("mapLink"), mapOpen || mapEmbed);
-      } else {
-        if ($("mapFrame")) $("mapFrame").src = "about:blank";
-        if ($("mapLink")) $("mapLink").style.display = "none";
-      }
-    }
-
-    // ===== Socials (flag) =====
-    const socials = $("socials");
-    if (F.showSocials === false) {
-      if (socials) socials.style.display = "none";
-    } else if (socials) {
-      socials.innerHTML = "";
-      (SITE.socials || []).forEach((s) => {
-        const a = document.createElement("a");
-        a.className = "soc";
-        a.href = s.url;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = s.label;
-        socials.appendChild(a);
-      });
-      if (!(SITE.socials || []).length) socials.style.display = "none";
-    }
-
-    // ===== Sticky (flag) =====
-    if (F.showSticky === false) {
-      const st = document.querySelector(".sticky");
-      if (st) st.style.display = "none";
-    }
-
-    // ===== Footer =====
-    safeText($("footerBrand"), SITE.brand || "");
-    safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
-    safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
-    if ($("year")) $("year").textContent = new Date().getFullYear();
-
-    // ===== Language switch (only if SITE.i18n exists; otherwise no-op) =====
-    function getLang(){
-      return localStorage.getItem("lang") || SITE.defaultLang || "en";
-    }
-    function paintLangButtons(lang){
-      $("langEN")?.classList.toggle("active", lang === "en");
-      $("langES")?.classList.toggle("active", lang === "es");
-    }
-    function t(key){
-      const lang = getLang();
-      return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
-    }
-    function applyLang(){
-      if (!SITE.i18n) return;
-
-      const lang = getLang();
-      paintLangButtons(lang);
-
-      // Header/brand
-      const brandText = t("brand");
-      if (brandText) document.title = brandText;
-      const tagline = t("tagline");
-      if (tagline) safeText($("tagline"), tagline);
-
-      // Hero
-      const hk = t("heroKicker"); if (hk) safeText($("kicker"), hk);
-      const ht = t("heroTitle");  if (ht) safeText($("heroTitle"), ht);
-      const hx = t("heroText");   if (hx) safeText($("heroText"), hx);
-
-      // Sections
-      const st = t("servicesTitle"); if (st) safeText($("servicesTitle"), st);
-      const sl = t("servicesLead");  if (sl) safeText($("servicesLead"), sl);
-      const ct = t("contactTitle");  if (ct) safeText($("contactTitle"), ct);
-      const cl = t("contactLead");   if (cl) safeText($("contactLead"), cl);
-
-      // Labels
-      const p1 = t("phone1Label"); if (p1) safeText($("phone1Label"), p1);
-      const p2 = t("phone2Label"); if (p2) safeText($("phone2Label"), p2);
-      const ml = t("mapLabel");    if (ml) safeText($("mapLink"), ml);
-
-      // Sticky buttons
-      const callBtn = t("callBtn"); if (callBtn) safeText($("sCall"), callBtn);
-      const waBtn   = t("waBtn");   if (waBtn) safeText($("sWhats"), waBtn);
-
-      // Footer brand label
-      if (brandText) safeText($("footerBrand"), brandText);
-
-      // Update lang attribute
-      document.documentElement.lang = lang;
+  // ===== Apply language (if i18n exists) =====
+  function applyLang(){
+    if (!SITE.i18n) {
+      // igual renderiza servicios con el idioma actual por si existe items.en/items.es
       renderServices();
+      return;
+    }
 
-    
+    const lang = getLang();
+    paintLangButtons(lang);
 
-    $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
-    $("langES")?.addEventListener("click", () => { localStorage.setItem("lang","es"); applyLang(); });
+    // Header/brand
+    const brandText = t("brand");
+    if (brandText) {
+      document.title = brandText;
+      safeText($("footerBrand"), brandText);
+    }
+    const tagline = t("tagline");
+    if (tagline) safeText($("tagline"), tagline);
 
+    // Hero
+    const hk = t("heroKicker"); if (hk) safeText($("kicker"), hk);
+    const ht = t("heroTitle");  if (ht) safeText($("heroTitle"), ht);
+    const hx = t("heroText");   if (hx) safeText($("heroText"), hx);
+
+    // Sections
+    const st = t("servicesTitle"); if (st) safeText($("servicesTitle"), st);
+    const sl = t("servicesLead");  if (sl) safeText($("servicesLead"), sl);
+    const ct = t("contactTitle");  if (ct) safeText($("contactTitle"), ct);
+    const cl = t("contactLead");   if (cl) safeText($("contactLead"), cl);
+
+    // Labels
+    const p1 = t("phone1Label"); if (p1) safeText($("phone1Label"), p1);
+    const p2 = t("phone2Label"); if (p2) safeText($("phone2Label"), p2);
+    const ml = t("mapLabel");    if (ml) safeText($("mapLink"), ml);
+
+    // Sticky buttons
+    const callBtn = t("callBtn"); if (callBtn) safeText($("sCall"), callBtn);
+    const waBtn   = t("waBtn");   if (waBtn) safeText($("sWhats"), waBtn);
+
+    document.documentElement.lang = lang;
+
+    // Re-render services in selected language
+    renderServices();
+  }
+
+  // ===== Language buttons =====
+  $("langEN")?.addEventListener("click", () => {
+    localStorage.setItem("lang","en");
     applyLang();
-  </script>
+  });
+
+  $("langES")?.addEventListener("click", () => {
+    localStorage.setItem("lang","es");
+    applyLang();
+  });
+
+  // ===== First paint =====
+  applyLang();
+</script>
+
 </body>
 </html>
