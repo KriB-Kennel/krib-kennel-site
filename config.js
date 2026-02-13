@@ -1,18 +1,20 @@
 const SITE = {
-  brand: "Navarro Towing",
+  brand: "Cliente X",
 
-  meta: {
-    title: "Navarro Towing | Servicio 24/7",
-    description: "Servicio de grúas y asistencia en carretera."
+  flags: {
+    showPhoto: true,
+    showPhone2: false,
+    showSocials: true,
+    showMap: true,
+    showSticky: true
   },
 
-  // Cambias colores por cliente (sin tocar CSS)
   colors: {
     bg0: "#0b1220",
     bg1: "#111a2e",
-    brand0: "#7dd3fc",
-    brand1: "#a78bfa",
-    btnText: "#0b1220",
+    brand0: "#22c55e",
+    brand1: "#a3e635",
+    btnText: "#061014",
     card: "rgba(255,255,255,.08)",
     stroke: "rgba(255,255,255,.14)",
     text: "rgba(255,255,255,.92)",
@@ -22,59 +24,48 @@ const SITE = {
   assets: {
     logo: "./assets/logo.png",
     hero: "./assets/hero.jpg",
-    photo: "./assets/photo.jpg" // pon null si NO quieres foto
+    photo: "./assets/photo.jpg"
   },
 
-  header: {
-    tagline: "Servicio 24/7 • Puerto Rico • Respuesta rápida"
-  },
+  header: { tagline: "Servicio • Ciudad • Respuesta rápida" },
 
   hero: {
-    kicker: "Disponible 24/7",
-    title: "Soluciones profesionales\nen carretera.",
-    text: "Grúas y asistencia vial. Llegamos rápido (según disponibilidad) y trabajamos seguro."
+    kicker: "Disponible",
+    title: "Título principal",
+    text: "Texto corto del negocio."
   },
 
   services: {
     title: "Servicios",
-    lead: "Asistencia vial y remolque con atención rápida y segura.",
+    lead: "Una frase breve.",
     items: [
-      { title: "Carretera", desc: "Asistencia para vehículos cuando lo necesites." },
-      { title: "Remolque", desc: "Servicio de grúa para autos, SUV y pickups." },
-      { title: "Cambio de goma", desc: "Cambio de neumáticos con herramientas adecuadas." },
-      { title: "Gasolina", desc: "Te llevamos combustible si te quedas sin gasolina." }
+      { title: "Servicio 1", desc: "Descripción" },
+      { title: "Servicio 2", desc: "Descripción" }
     ]
   },
 
-  contactSection: {
-    title: "Contacto",
-    lead: "Llama o escribe por WhatsApp. Respuesta según disponibilidad."
-  },
-
   contact: {
-    phone1Label: "Teléfono principal",
-    phone1: "(787) 366-0008",
-    phone1E164: "+17873660008",
+    phone1Label: "Teléfono",
+    phone1: "(787) 000-0000",
+    phone1E164: "+17870000000",
 
-    phone2Label: "Teléfono alterno",
-    phone2: "(787) 934-1644",
-    phone2E164: "+17879341644",
+    phone2Label: "Alterno",
+    phone2: "",
+    phone2E164: "",
 
-    whatsappE164: "17873660008",
-    whatsappMessage: "Hola, necesito asistencia. Mi ubicación es:",
-    whatsappHint: "Enviar ubicación y detalles"
+    whatsappE164: "17870000000",
+    whatsappMessage: "Hola, necesito información.",
+    whatsappHint: "Escribir por WhatsApp"
   },
 
   map: {
-    embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242632.89211665784!2d-66.251707!3d18.2319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c03686fe268196f%3A0x8c8aeb1b7b7e15a6!2sPuerto%20Rico!5e0!3m2!1ses!2spr!4v0000000000000",
-    openUrl: "https://maps.google.com/?q=Puerto+Rico"
+    embedUrl: "",
+    openUrl: ""
   },
 
   socials: [
-    { label: "Instagram", url: "https://www.instagram.com/navarro_towing_service?igsh=MTU1cmlhdzRpNW9rOA==" },
-    { label: "Facebook",  url: "https://www.facebook.com/share/1ETZkfbvzr/?mibextid=wwXIfr" },
-    { label: "TikTok",    url: "https://www.tiktok.com/@nomarnavarrocoln?_r=1&_t=ZT-93kwbAny2O6" }
+    { label: "Instagram", url: "https://instagram.com" },
+    { label: "Facebook", url: "https://facebook.com" }
   ],
 
   footer: {
