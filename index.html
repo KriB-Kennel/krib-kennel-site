@@ -165,25 +165,39 @@
     const heroImg = SITE.assets?.hero || "./assets/hero.jpg";
     if ($("heroBg")) $("heroBg").style.backgroundImage = `url("${heroImg}")`;
 
-    // ===== Services list =====
-    safeText($("servicesTitle"), SITE.services?.title || "Services");
-    safeText($("servicesLead"), SITE.services?.lead || "");
-    const list = $("servicesList");
-    if (list){
-      list.innerHTML = "";
-const langNow = localStorage.getItem("lang") || SITE.defaultLang || "en";
-const items = SITE.services?.items?.[langNow] || SITE.services?.items?.en || [];
-items.forEach((it) => {
-        const div = document.createElement("div");
-        div.className = "item";
-        div.innerHTML =
-          `<div class="dot" aria-hidden="true"></div>
-           <div>
-             <div class="it-title">${it.title || ""}</div>
-             <div class="it-desc">${it.desc || ""}</div>
-           </div>`;
-        list.appendChild(div);
-      });
+   // ===== Services list (EN/ES) =====
+function renderServices(){
+  // Títulos/lead: vienen del i18n cuando exista
+  safeText($("servicesTitle"), SITE.services?.title || $("servicesTitle")?.textContent || "Services");
+  safeText($("servicesLead"), SITE.services?.lead || $("servicesLead")?.textContent || "");
+
+  const list = $("servicesList");
+  if (!list) return;
+
+  const langNow = localStorage.getItem("lang") || SITE.defaultLang || "en";
+  const items =
+    SITE.services?.items?.[langNow] ||
+    SITE.services?.items?.en ||
+    SITE.services?.items ||
+    [];
+
+  list.innerHTML = "";
+  items.forEach((it) => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <div class="dot" aria-hidden="true"></div>
+      <div>
+        <div class="it-title">${it.title || ""}</div>
+        <div class="it-desc">${it.desc || ""}</div>
+      </div>`;
+    list.appendChild(div);
+  });
+}
+
+// Render inicial
+renderServices();
+
     }
 
     // ===== Photo (ONLY flag controls) =====
