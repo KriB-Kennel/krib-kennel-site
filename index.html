@@ -318,6 +318,8 @@ renderServices();
 
       // Update lang attribute
       document.documentElement.lang = lang;
+      renderServices();
+
     }
 
     $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
