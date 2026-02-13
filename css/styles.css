@@ -324,4 +324,44 @@ input:focus, textarea:focus{ border-color: rgba(47,125,255,.55); }
   .menu{ display:block; }
   .main-logo{ width: 160px; }
 }
+/* ===== MENU SIMPLE PARA MOVIL (sin duplicados) ===== */
+@media (max-width: 940px){
+
+  /* no ocultar el menu */
+  .links{ 
+    display:flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* centramos el nav */
+  .nav{
+    justify-content: center !important;
+    padding: 10px 0 !important;
+  }
+
+  /* si el botón hamburguesa todavía existe, lo ocultamos */
+  .menu{
+    display:none !important;
+  }
+
+  /* links más compactos */
+  .links a{
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+
+  /* el botón Contactar se queda “premium” */
+  .links a.btn{
+    background: linear-gradient(180deg, rgba(47,125,255,.95), rgba(47,125,255,.72));
+    border: 1px solid rgba(255,255,255,.14);
+    color: #071023;
+  }
+}
+
+
 
