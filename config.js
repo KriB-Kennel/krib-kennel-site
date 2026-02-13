@@ -1,19 +1,20 @@
 const SITE = {
-  brand: "Cliente X",
+  brand: "KriB Kennel",
 
   flags: {
-    showPhoto: true,
+    showPhoto: true,     // si no tienes foto aún, pon false
     showPhone2: false,
-    showSocials: true,
+    showSocials: false,  // pon true cuando tengas links
     showMap: true,
     showSticky: true
   },
 
+  // Azul (preferido) :contentReference[oaicite:1]{index=1}
   colors: {
-    bg0: "#0b1220",
-    bg1: "#111a2e",
-    brand0: "#22c55e",
-    brand1: "#a3e635",
+    bg0: "#071226",
+    bg1: "#0b1e3b",
+    brand0: "#2ea8ff",
+    brand1: "#0b5cff",
     btnText: "#061014",
     card: "rgba(255,255,255,.08)",
     stroke: "rgba(255,255,255,.14)",
@@ -23,49 +24,53 @@ const SITE = {
 
   assets: {
     logo: "./assets/logo.png",
-    hero: "./assets/hero.jpg",
-    photo: "./assets/photo.jpg"
+    hero: "./assets/hero.jpg",    // sube una foto bonita (o pon un color de fondo si no tienes)
+    photo: "./assets/photo.jpg"   // foto adicional (opcional)
   },
 
-  header: { tagline: "Servicio • Ciudad • Respuesta rápida" },
+  header: {
+    tagline: "Guaynabo • 9am–6pm • Puerto Rico" // Guaynabo + horario :contentReference[oaicite:2]{index=2}
+  },
 
   hero: {
-    kicker: "Disponible",
-    title: "Título principal",
-    text: "Texto corto del negocio."
+    kicker: "Venta • Hospedaje • Training • Grooming", // servicios :contentReference[oaicite:3]{index=3}
+    title: "KriB Kennel",
+    text: "Venta de perros, hospedaje, training y grooming. Atención 9am a 6pm."
   },
 
   services: {
     title: "Servicios",
-    lead: "Una frase breve.",
+    lead: "Todo en un solo lugar para tu mascota.",
     items: [
-      { title: "Servicio 1", desc: "Descripción" },
-      { title: "Servicio 2", desc: "Descripción" }
+      { title: "Venta de perros", desc: "Variedad y orientación para elegir tu mascota." },
+      { title: "Hospedaje", desc: "Cuidado y estadía segura (según disponibilidad)." },
+      { title: "Training", desc: "Entrenamiento básico y obediencia." },
+      { title: "Grooming", desc: "Baño, grooming y cuidado general." }
     ]
+  },
+
+  contactSection: {
+    title: "Contacto",
+    lead: "Llámanos o escríbenos por WhatsApp para disponibilidad y detalles."
   },
 
   contact: {
     phone1Label: "Teléfono",
-    phone1: "(787) 000-0000",
-    phone1E164: "+17870000000",
-
-    phone2Label: "Alterno",
-    phone2: "",
-    phone2E164: "",
-
-    whatsappE164: "17870000000",
-    whatsappMessage: "Hola, necesito información.",
+    phone1: "(787) 383-0494",          // :contentReference[oaicite:4]{index=4}
+    phone1E164: "+17873830494",
+    whatsappE164: "17873830494",       // :contentReference[oaicite:5]{index=5}
+    whatsappMessage: "Hola, necesito información sobre KriB Kennel.",
     whatsappHint: "Escribir por WhatsApp"
   },
 
   map: {
-    embedUrl: "",
-    openUrl: ""
+    // Como el formulario solo dice “Guaynabo”, úsalo así de momento :contentReference[oaicite:6]{index=6}
+    embedUrl: "", 
+    openUrl: "https://maps.google.com/?q=Guaynabo,+Puerto+Rico"
   },
 
   socials: [
-    { label: "Instagram", url: "https://instagram.com" },
-    { label: "Facebook", url: "https://facebook.com" }
+    // cuando tengas links reales, los activas y pones showSocials:true
   ],
 
   footer: {
