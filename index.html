@@ -169,13 +169,14 @@
       list.appendChild(div);
     });
 
-    // Foto
-    if (SITE.assets?.photo === null){
-      $("photoWrap").style.display = "none";
-    } else {
-      safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
-      $("photo").alt = SITE.brand ? `${SITE.brand} - Foto` : "Foto";
-    }
+   // Foto (controlada por FLAG)
+if (F.showPhoto === false) {
+  $("photoWrap").style.display = "none";
+} else {
+  safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
+  $("photo").alt = SITE.brand ? `${SITE.brand} - Foto` : "Foto";
+}
+
 
     // Contacto
     safeText($("contactTitle"), SITE.contactSection?.title || "Contacto");
@@ -206,13 +207,7 @@
       $("mapLink").style.display = "none";
     }
 
-    // QR
-    if (SITE.assets?.qr === null){
-      $("qrImg").closest(".mini").style.display = "none";
-    } else {
-      safeSrc($("qrImg"), SITE.assets?.qr || "./assets/qr.png");
-      safeText($("qrNote"), SITE.qr?.note || "Escanéame para abrir el enlace.");
-    }
+    
 
     // Sociales
     const socials = $("socials");
