@@ -93,29 +93,10 @@ body{
 }
 .w100{ width:100%; }
 
-.menu{
-  display:none;
-  width:44px; height:44px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-}
-.menu span{ display:block; height:2px; margin:6px 10px; background: rgba(255,255,255,.78); border-radius:2px; }
 
-.mobile{
-  width:min(1120px, 92vw);
-  margin:0 auto 12px;
-  display:grid; gap:10px;
-  padding: 10px 0 14px;
-}
-.mobile a{
-  padding:12px 14px;
-  border-radius: 16px;
-  text-decoration:none;
-  color: var(--text);
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.05);
-}
+
+
+
 
 .hero{
   display:grid;
@@ -267,8 +248,6 @@ input:focus, textarea:focus{ border-color: rgba(47,125,255,.55); }
   .grid3{ grid-template-columns: 1fr; }
   .grid2{ grid-template-columns: 1fr; }
   .contact{ grid-template-columns: 1fr; }
-  .links{ display:none; }
-  .menu{ display:block; }
 }
 <body>
   <div class="bg"></div>
