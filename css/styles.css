@@ -300,4 +300,49 @@ input:focus, textarea:focus{ border-color: rgba(47,125,255,.55); }
       <a href="#contacto" class="btn">Contactar</a>
     </div>
   </header>
+/* ===== LOGO TOP ===== */
+.logo-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding: 18px 0 6px;
+}
+
+.main-logo{
+  width: 190px;      /* tamaño desktop */
+  max-width: 70vw;   /* responsive */
+  height: auto;
+  display:block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,.55));
+}
+
+/* ===== TOPBAR: aseguramos que el menu se vea ===== */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end; /* menu hacia la derecha como navbar limpia */
+  gap:14px;
+  padding: 12px 0;
+}
+
+/* En desktop, el menu debe verse */
+.links{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* En móvil, ocultamos links y mostramos botón hamburguesa */
+@media (max-width: 940px){
+  .links{ display:none; }
+  .menu{ display:block; }
+  .main-logo{ width: 160px; }
+}
 
