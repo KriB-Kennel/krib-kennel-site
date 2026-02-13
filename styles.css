@@ -347,3 +347,24 @@ img{ max-width:100%; height:auto; display:block; }
   background: linear-gradient(180deg, var(--brand0), var(--brand1));
   color: var(--btnText);
 }
+.lang{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:10px;
+}
+.langbtn{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  font-family:"Oswald", system-ui;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.langbtn.active{
+  background: linear-gradient(180deg, var(--brand0), var(--brand1));
+  color: var(--btnText);
+}
+
