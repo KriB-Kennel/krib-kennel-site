@@ -362,6 +362,76 @@ input:focus, textarea:focus{ border-color: rgba(47,125,255,.55); }
     color: #071023;
   }
 }
+/* ===== NAV: limpio otra vez ===== */
+.brand-mini{
+  display:none;
+  text-decoration:none;
+  color: rgba(255,255,255,.86);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding: 12px 0;
+}
+
+/* Desktop: menú normal */
+.links{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* Mobile dropdown (oculto por defecto) */
+.mobile{
+  width:min(1120px, 92vw);
+  margin: 10px auto 12px;
+  padding: 12px;
+  display:grid;
+  gap:10px;
+}
+.mobile a{
+  padding:12px 14px;
+  border-radius: 16px;
+  text-decoration:none;
+  color: rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  font-weight: 700;
+}
+
+/* Logo: tamaño más premium (no tan pequeño, no tan grande) */
+.logo-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding: 18px 0 10px;
+}
+.main-logo{
+  width: 210px;
+  max-width: 72vw;
+  height:auto;
+  display:block;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 36px rgba(0,0,0,.55));
+}
+
+/* ===== Breakpoint móvil: escondemos links y usamos hamburguesa ===== */
+@media (max-width: 940px){
+  .brand-mini{ display:block; }
+  .links{ display:none; }
+  .menu{ display:block; }
+}
+
+/* Desktop: ocultamos hamburguesa + dropdown */
+@media (min-width: 941px){
+  .menu{ display:none; }
+  .mobile{ display:none !important; }
+}
 
 
 
