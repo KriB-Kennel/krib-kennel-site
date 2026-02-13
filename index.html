@@ -110,6 +110,9 @@
   <script>
     // ===== Render desde config.js (SOLO personalizas SITE) =====
     const $ = (id) => document.getElementById(id);
+    // ===== FLAGS (activar/desactivar secciones) =====
+    const F = SITE.flags || {};
+
 
     function safeText(el, v){ if(el) el.textContent = v ?? ""; }
     function safeHref(el, v){ if(el && v) el.href = v; }
@@ -230,6 +233,38 @@
     safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
 
     $("year").textContent = new Date().getFullYear();
+    // ===== Aplicar FLAGS =====
+
+// Foto
+if (!F.showPhoto) {
+  const pw = document.getElementById("photoWrap");
+  if (pw) pw.style.display = "none";
+}
+
+// Segundo teléfono
+if (!F.showPhone2) {
+  const p2 = document.getElementById("linePhone2");
+  if (p2) p2.style.display = "none";
+}
+
+// Redes sociales
+if (!F.showSocials) {
+  const s = document.getElementById("socials");
+  if (s) s.style.display = "none";
+}
+
+// Mapa
+if (!F.showMap) {
+  const map = document.getElementById("mapFrame");
+  if (map) map.closest(".mini").style.display = "none";
+}
+
+// Sticky bottom
+if (!F.showSticky) {
+  const st = document.querySelector(".sticky");
+  if (st) st.style.display = "none";
+}
+
   </script>
 </body>
 </html>
