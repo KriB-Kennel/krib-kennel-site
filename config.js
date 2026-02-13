@@ -29,11 +29,10 @@ const SITE = {
   },
 
   header: {
-    tagline: "Guaynabo • 9am–6pm • Puerto Rico" // Guaynabo + horario :contentReference[oaicite:2]{index=2}
+    kicker: "Hospedaje • Training • Grooming", // servicios :contentReference[oaicite:3]{index=3}
   },
 
   hero: {
-    kicker: "Venta • Hospedaje • Training • Grooming", // servicios :contentReference[oaicite:3]{index=3}
     title: "KriB Kennel",
     text: "Venta de perros, hospedaje, training y grooming. Atención 9am a 6pm."
   },
