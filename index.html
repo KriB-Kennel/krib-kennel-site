@@ -15,7 +15,6 @@
 </head>
 
 <body>
-  <!-- Fondo suave (sin “tema navarro”) -->
   <div class="bg" aria-hidden="true"></div>
 
   <main class="wrap">
@@ -25,10 +24,9 @@
       <div class="tagline" id="tagline">Servicio • Ciudad • Respuesta rápida</div>
 
       <div class="lang">
-  <button class="langbtn" id="langEN" type="button">EN</button>
-  <button class="langbtn" id="langES" type="button">ES</button>
-</div>
-
+        <button class="langbtn" id="langEN" type="button">EN</button>
+        <button class="langbtn" id="langES" type="button">ES</button>
+      </div>
     </header>
 
     <!-- HERO -->
@@ -56,19 +54,30 @@
       </div>
     </section>
 
-    <!-- CONTACTO + MAPA + QR -->
+    <!-- CONTACTO + MAPA -->
     <section class="card section" id="contacto">
       <h2 class="section-title" id="contactTitle">Contacto</h2>
       <p class="section-lead" id="contactLead">Llama o escribe por WhatsApp. Respuesta según disponibilidad.</p>
 
       <div class="contact">
-        <a class="line" id="linePhone1" href="#"><b id="phone1Label">Teléfono</b><span id="phone1Text">---</span></a>
-        <a class="line" id="linePhone2" href="#"><b id="phone2Label">Teléfono alterno</b><span id="phone2Text">---</span></a>
-        <a class="line" id="lineWhats" href="#" target="_blank" rel="noopener"><b>WhatsApp</b><span id="whatsText">Escribir ahora</span></a>
+        <a class="line" id="linePhone1" href="#">
+          <b id="phone1Label">Teléfono</b>
+          <span id="phone1Text">---</span>
+        </a>
+
+        <a class="line" id="linePhone2" href="#">
+          <b id="phone2Label">Teléfono alterno</b>
+          <span id="phone2Text">---</span>
+        </a>
+
+        <a class="line" id="lineWhats" href="#" target="_blank" rel="noopener">
+          <b>WhatsApp</b>
+          <span id="whatsText">Escribir ahora</span>
+        </a>
       </div>
 
       <div class="split">
-        <div class="mini">
+        <div class="mini" id="mapMini">
           <h3 class="mini-title">Mapa</h3>
           <div class="map">
             <iframe
@@ -82,8 +91,6 @@
           </div>
           <a class="mini-link" id="mapLink" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
         </div>
-
-       
       </div>
 
       <div class="socials" id="socials">
@@ -109,158 +116,198 @@
 
   <script src="./config.js"></script>
   <script>
-    // ===== Render desde config.js (SOLO personalizas SITE) =====
+    // ===== Helpers =====
     const $ = (id) => document.getElementById(id);
-    // ===== FLAGS (activar/desactivar secciones) =====
-    const F = SITE.flags || {};
-
-
     function safeText(el, v){ if(el) el.textContent = v ?? ""; }
     function safeHref(el, v){ if(el && v) el.href = v; }
     function safeSrc(el, v){ if(el && v) el.src = v; }
 
-    // CSS variables (colores cliente)
+    // ===== FLAGS =====
+    const F = SITE.flags || {};
+
+    // ===== Apply CSS vars from config =====
     const root = document.documentElement.style;
     Object.entries(SITE.colors || {}).forEach(([k,v]) => root.setProperty(`--${k}`, v));
 
-    // Meta / Title
+    // ===== Title =====
     document.title = SITE.meta?.title || document.title;
 
-    // Header
+    // ===== Header =====
     safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
-    $("logo").alt = SITE.brand || "Logo";
+    if ($("logo")) $("logo").alt = SITE.brand || "Logo";
     safeText($("tagline"), SITE.header?.tagline || "");
 
-    // Botones
+    // ===== Contact links =====
     const tel1 = SITE.contact?.phone1 || "";
     const tel2 = SITE.contact?.phone2 || "";
-    const tel1Clean = SITE.contact?.phone1E164 || ""; // opcional: +1787...
+    const tel1Clean = SITE.contact?.phone1E164 || "";
     const tel2Clean = SITE.contact?.phone2E164 || "";
 
-if ($("btnCall")) safeHref($("btnCall"), `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
-    safeHref($("sCall"),  `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
+    const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
+    const telHref2 = `tel:${tel2Clean || tel2.replace(/[^0-9+]/g,"")}`;
 
-    const wa = SITE.contact?.whatsappE164 || ""; // 1787...
-    const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hola, necesito información.");
+    safeHref($("sCall"), telHref1);
+    safeHref($("linePhone1"), telHref1);
+
+    // WhatsApp
+    const wa = SITE.contact?.whatsappE164 || "";
+    const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hello, I need information.");
     const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
-if ($("btnWhats")) safeHref($("btnWhats"), waLink);
     safeHref($("sWhats"), waLink);
     safeHref($("lineWhats"), waLink);
 
-    // Hero
+    safeText($("whatsText"), SITE.contact?.whatsappHint || "WhatsApp");
+
+    // ===== Hero =====
     safeText($("kicker"), SITE.hero?.kicker || "");
     safeText($("heroTitle"), SITE.hero?.title || "");
     safeText($("heroText"), SITE.hero?.text || "");
     const heroImg = SITE.assets?.hero || "./assets/hero.jpg";
-    $("heroBg").style.backgroundImage = `url("${heroImg}")`;
+    if ($("heroBg")) $("heroBg").style.backgroundImage = `url("${heroImg}")`;
 
-    // Servicios (lista)
-    safeText($("servicesTitle"), SITE.services?.title || "Servicios");
+    // ===== Services list =====
+    safeText($("servicesTitle"), SITE.services?.title || "Services");
     safeText($("servicesLead"), SITE.services?.lead || "");
     const list = $("servicesList");
-    list.innerHTML = "";
-    (SITE.services?.items || []).forEach((it) => {
-      const div = document.createElement("div");
-      div.className = "item";
-      div.innerHTML = `<div class="dot" aria-hidden="true"></div>
-                       <div>
-                         <div class="it-title">${it.title || ""}</div>
-                         <div class="it-desc">${it.desc || ""}</div>
-                       </div>`;
-      list.appendChild(div);
-    });
+    if (list){
+      list.innerHTML = "";
+      (SITE.services?.items || []).forEach((it) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML =
+          `<div class="dot" aria-hidden="true"></div>
+           <div>
+             <div class="it-title">${it.title || ""}</div>
+             <div class="it-desc">${it.desc || ""}</div>
+           </div>`;
+        list.appendChild(div);
+      });
+    }
 
-   // Foto (controlada por FLAG)
-if (F.showPhoto === false) {
-  $("photoWrap").style.display = "none";
-} else {
-  safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
-  $("photo").alt = SITE.brand ? `${SITE.brand} - Foto` : "Foto";
-}
+    // ===== Photo (ONLY flag controls) =====
+    if (F.showPhoto === false) {
+      if ($("photoWrap")) $("photoWrap").style.display = "none";
+    } else {
+      safeSrc($("photo"), SITE.assets?.photo || "./assets/photo.jpg");
+      if ($("photo")) $("photo").alt = SITE.brand ? `${SITE.brand} - Photo` : "Photo";
+    }
 
-
-    // Contacto
-    safeText($("contactTitle"), SITE.contactSection?.title || "Contacto");
+    // ===== Contact text =====
+    safeText($("contactTitle"), SITE.contactSection?.title || "Contact");
     safeText($("contactLead"), SITE.contactSection?.lead || "");
 
-    safeText($("phone1Label"), SITE.contact?.phone1Label || "Teléfono");
+    safeText($("phone1Label"), SITE.contact?.phone1Label || "Phone");
     safeText($("phone1Text"), tel1 || "");
-    safeHref($("linePhone1"), `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`);
 
-    if (tel2){
-      safeText($("phone2Label"), SITE.contact?.phone2Label || "Teléfono alterno");
+    // Phone 2 (flag + has number)
+    if (F.showPhone2 === false || !tel2) {
+      if ($("linePhone2")) $("linePhone2").style.display = "none";
+    } else {
+      safeText($("phone2Label"), SITE.contact?.phone2Label || "Alternate");
       safeText($("phone2Text"), tel2);
-      safeHref($("linePhone2"), `tel:${tel2Clean || tel2.replace(/[^0-9+]/g,"")}`);
-    } else {
-      $("linePhone2").style.display = "none";
+      safeHref($("linePhone2"), telHref2);
     }
 
-    safeText($("whatsText"), SITE.contact?.whatsappHint || "Escribir ahora");
-
-    // Mapa
-    const mapEmbed = SITE.map?.embedUrl || "";
-    const mapOpen  = SITE.map?.openUrl || "";
-    if (mapEmbed){
-      $("mapFrame").src = mapEmbed;
-      safeHref($("mapLink"), mapOpen || mapEmbed);
+    // ===== Map (flag) =====
+    if (F.showMap === false) {
+      if ($("mapMini")) $("mapMini").style.display = "none";
     } else {
-      $("mapFrame").src = "about:blank";
-      $("mapLink").style.display = "none";
+      const mapEmbed = SITE.map?.embedUrl || "";
+      const mapOpen  = SITE.map?.openUrl || "";
+      if (mapEmbed) {
+        if ($("mapFrame")) $("mapFrame").src = mapEmbed;
+        safeHref($("mapLink"), mapOpen || mapEmbed);
+      } else {
+        if ($("mapFrame")) $("mapFrame").src = "about:blank";
+        if ($("mapLink")) $("mapLink").style.display = "none";
+      }
     }
 
-    
-
-    // Sociales
+    // ===== Socials (flag) =====
     const socials = $("socials");
-    socials.innerHTML = "";
-    (SITE.socials || []).forEach((s) => {
-      const a = document.createElement("a");
-      a.className = "soc";
-      a.href = s.url;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.textContent = s.label; // simple (sin icons para no complicar)
-      socials.appendChild(a);
-    });
+    if (F.showSocials === false) {
+      if (socials) socials.style.display = "none";
+    } else if (socials) {
+      socials.innerHTML = "";
+      (SITE.socials || []).forEach((s) => {
+        const a = document.createElement("a");
+        a.className = "soc";
+        a.href = s.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = s.label;
+        socials.appendChild(a);
+      });
+      if (!(SITE.socials || []).length) socials.style.display = "none";
+    }
 
-    // Footer
+    // ===== Sticky (flag) =====
+    if (F.showSticky === false) {
+      const st = document.querySelector(".sticky");
+      if (st) st.style.display = "none";
+    }
+
+    // ===== Footer =====
     safeText($("footerBrand"), SITE.brand || "");
     safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
     safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
+    if ($("year")) $("year").textContent = new Date().getFullYear();
 
-    $("year").textContent = new Date().getFullYear();
-    // ===== Aplicar FLAGS =====
+    // ===== Language switch (only if SITE.i18n exists; otherwise no-op) =====
+    function getLang(){
+      return localStorage.getItem("lang") || SITE.defaultLang || "en";
+    }
+    function paintLangButtons(lang){
+      $("langEN")?.classList.toggle("active", lang === "en");
+      $("langES")?.classList.toggle("active", lang === "es");
+    }
+    function t(key){
+      const lang = getLang();
+      return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
+    }
+    function applyLang(){
+      if (!SITE.i18n) return;
 
-// Foto
-if (!F.showPhoto) {
-  const pw = document.getElementById("photoWrap");
-  if (pw) pw.style.display = "none";
-}
+      const lang = getLang();
+      paintLangButtons(lang);
 
-// Segundo teléfono
-if (!F.showPhone2) {
-  const p2 = document.getElementById("linePhone2");
-  if (p2) p2.style.display = "none";
-}
+      // Header/brand
+      const brandText = t("brand");
+      if (brandText) document.title = brandText;
+      const tagline = t("tagline");
+      if (tagline) safeText($("tagline"), tagline);
 
-// Redes sociales
-if (!F.showSocials) {
-  const s = document.getElementById("socials");
-  if (s) s.style.display = "none";
-}
+      // Hero
+      const hk = t("heroKicker"); if (hk) safeText($("kicker"), hk);
+      const ht = t("heroTitle");  if (ht) safeText($("heroTitle"), ht);
+      const hx = t("heroText");   if (hx) safeText($("heroText"), hx);
 
-// Mapa
-if (!F.showMap) {
-  const map = document.getElementById("mapFrame");
-  if (map) map.closest(".mini").style.display = "none";
-}
+      // Sections
+      const st = t("servicesTitle"); if (st) safeText($("servicesTitle"), st);
+      const sl = t("servicesLead");  if (sl) safeText($("servicesLead"), sl);
+      const ct = t("contactTitle");  if (ct) safeText($("contactTitle"), ct);
+      const cl = t("contactLead");   if (cl) safeText($("contactLead"), cl);
 
-// Sticky bottom
-if (!F.showSticky) {
-  const st = document.querySelector(".sticky");
-  if (st) st.style.display = "none";
-}
+      // Labels
+      const p1 = t("phone1Label"); if (p1) safeText($("phone1Label"), p1);
+      const p2 = t("phone2Label"); if (p2) safeText($("phone2Label"), p2);
+      const ml = t("mapLabel");    if (ml) safeText($("mapLink"), ml);
 
+      // Sticky buttons
+      const callBtn = t("callBtn"); if (callBtn) safeText($("sCall"), callBtn);
+      const waBtn   = t("waBtn");   if (waBtn) safeText($("sWhats"), waBtn);
+
+      // Footer brand label
+      if (brandText) safeText($("footerBrand"), brandText);
+
+      // Update lang attribute
+      document.documentElement.lang = lang;
+    }
+
+    $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
+    $("langES")?.addEventListener("click", () => { localStorage.setItem("lang","es"); applyLang(); });
+
+    applyLang();
   </script>
 </body>
 </html>
