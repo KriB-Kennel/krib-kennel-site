@@ -5,9 +5,9 @@ const SITE = {
   i18n: {
     en: {
       brand: "KriB Kennel",
-      tagline: "Guaynabo • 9am–6pm • Puerto Rico",
+      tagline: "Dog Sales • Boarding • Training • Grooming",
 
-      heroKicker: "Dog Sales • Boarding • Training • Grooming",
+      heroKicker: "Guaybabo • Puerto Rico •",
       heroTitle: "KriB Kennel",
       heroText: "Dog sales, boarding, training and grooming. Open 9am–6pm.",
 
@@ -27,9 +27,9 @@ const SITE = {
 
     es: {
       brand: "KriB Kennel",
-      tagline: "Guaynabo • 9am–6pm • Puerto Rico",
+      tagline: "Hospedaje • Training • Grooming",
 
-      heroKicker: "Venta • Hospedaje • Training • Grooming",
+      heroKicker: "Guaybabo • Puerto Rico •",
       heroTitle: "KriB Kennel",
       heroText: "Venta de perros, hospedaje, training y grooming. Atención 9am a 6pm.",
 
