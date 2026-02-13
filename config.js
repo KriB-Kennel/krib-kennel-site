@@ -22,7 +22,7 @@ const SITE = {
   assets: {
     logo: "./assets/logo.png",
     hero: "./assets/hero.jpg",
-    photo: "./assets/photo.jpg", // pon null si NO quieres foto
+    photo: "./assets/photo.jpg" // pon null si NO quieres foto
   },
 
   header: {
@@ -65,7 +65,6 @@ const SITE = {
     whatsappHint: "Enviar ubicación y detalles"
   },
 
-  // ✅ Mapa: usa un embed URL (iframe) y un link para abrir
   map: {
     embedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242632.89211665784!2d-66.251707!3d18.2319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c03686fe268196f%3A0x8c8aeb1b7b7e15a6!2sPuerto%20Rico!5e0!3m2!1ses!2spr!4v0000000000000",
@@ -77,8 +76,6 @@ const SITE = {
     { label: "Facebook",  url: "https://www.facebook.com/share/1ETZkfbvzr/?mibextid=wwXIfr" },
     { label: "TikTok",    url: "https://www.tiktok.com/@nomarnavarrocoln?_r=1&_t=ZT-93kwbAny2O6" }
   ],
-
- ,
 
   footer: {
     companyLabel: "RaymondDevelop",
