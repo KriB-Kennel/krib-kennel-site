@@ -23,7 +23,6 @@ const SITE = {
     logo: "./assets/logo.png",
     hero: "./assets/hero.jpg",
     photo: "./assets/photo.jpg", // pon null si NO quieres foto
-    qr: "./assets/qr.png"        // pon null si NO quieres QR
   },
 
   header: {
@@ -79,9 +78,7 @@ const SITE = {
     { label: "TikTok",    url: "https://www.tiktok.com/@nomarnavarrocoln?_r=1&_t=ZT-93kwbAny2O6" }
   ],
 
-  qr: {
-    note: "Escanéame para guardar el contacto / abrir WhatsApp."
-  },
+ ,
 
   footer: {
     companyLabel: "RaymondDevelop",
