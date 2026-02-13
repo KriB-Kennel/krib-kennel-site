@@ -171,7 +171,9 @@
     const list = $("servicesList");
     if (list){
       list.innerHTML = "";
-      (SITE.services?.items || []).forEach((it) => {
+const langNow = localStorage.getItem("lang") || SITE.defaultLang || "en";
+const items = SITE.services?.items?.[langNow] || SITE.services?.items?.en || [];
+items.forEach((it) => {
         const div = document.createElement("div");
         div.className = "item";
         div.innerHTML =
