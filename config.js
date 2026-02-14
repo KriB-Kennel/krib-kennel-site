@@ -72,7 +72,7 @@ const SITE = {
 
   assets: {
     logo: "./assets/logo.png",
-    hero: "./assets/hero.jpg",
+    hero: "./assets/hero.png",
     photo: "./assets/photo.jpg"
   },
 
