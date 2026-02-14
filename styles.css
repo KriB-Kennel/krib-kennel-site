@@ -123,7 +123,14 @@ img{max-width:100%;display:block;height:auto}
   display:flex;
   flex-direction:column;
   gap:10px;
+    min-height: 300px;
+
 }
+.hero-title,
+.hero-text{
+  margin-top: auto;
+}
+
 
 .kicker{
   font-family:"Oswald",system-ui;
