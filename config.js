@@ -54,7 +54,7 @@ const SITE = {
     showPhoto: true,
     showPhone2: false,
     showSocials: false,
-    showMap: true,
+    showMap: false,
     showSticky: true
   },
 
