@@ -1,1 +1,67 @@
+/* ===== Capas seguras ===== */
+.bg{ z-index:-2 !important; }
+
+.gold-rain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+  opacity:.8;
+}
+
+/* ===== Capa densa ===== */
+.gold-rain::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:1.6px;
+  height:1.6px;
+  border-radius:999px;
+  background: rgba(255, 215, 80, .45);
+
+  box-shadow:
+    3vw 18vh, 8vw 42vh, 13vw 65vh, 18vw 28vh, 23vw 80vh,
+    28vw 52vh, 33vw 36vh, 38vw 74vh, 43vw 22vh, 48vw 60vh,
+    53vw 44vh, 58vw 86vh, 63vw 30vh, 68vw 70vh, 73vw 50vh,
+    78vw 24vh, 83vw 62vh, 88vw 40vh, 93vw 78vh, 97vw 55vh;
+
+  animation: rainUpDense 28s linear infinite;
+  filter: blur(.15px);
+  will-change: transform;
+}
+
+/* ===== Segunda capa ===== */
+.gold-rain::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:1.2px;
+  height:1.2px;
+  border-radius:999px;
+  background: rgba(255, 220, 120, .35);
+
+  box-shadow:
+    6vw 26vh, 16vw 58vh, 26vw 34vh, 36vw 82vh, 46vw 48vh,
+    56vw 20vh, 66vw 66vh, 76vw 40vh, 86vw 74vh, 96vw 52vh;
+
+  animation: rainUpSoft 42s linear infinite;
+  filter: blur(.25px);
+  will-change: transform;
+}
+
+/* ===== Animaciones ===== */
+@keyframes rainUpDense{
+  0%{ transform: translateY(0) translateX(0);}
+  50%{ transform: translateY(-80vh) translateX(1.6vw);}
+  100%{ transform: translateY(-160vh) translateX(-1.2vw);}
+}
+
+@keyframes rainUpSoft{
+  0%{ transform: translateY(0) translateX(0);}
+  50%{ transform: translateY(-90vh) translateX(-1.2vw);}
+  100%{ transform: translateY(-180vh) translateX(1vw);}
+}
 
