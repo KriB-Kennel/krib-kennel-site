@@ -122,14 +122,15 @@ img{max-width:100%;display:block;height:auto}
   padding:18px;
   display:flex;
   flex-direction:column;
-  gap:10px;
-    min-height: 300px;
-
+  height:100%;
 }
+
+/* 👇 SOLO baja el texto blanco */
 .hero-title,
 .hero-text{
-  margin-top: auto;
+  margin-top:auto;
 }
+
 
 
 .kicker{
