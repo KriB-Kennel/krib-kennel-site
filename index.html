@@ -76,18 +76,7 @@
         </a>
       </div>
 
-      <div class="split">
-<div class="mini" id="extraMini">
-  <h3 class="mini-title">Gallery</h3>
-
-  <div class="photo">
-    <img id="mapPhoto"
-         src="./assets/mapphoto.png"
-         alt="Photo"
-         loading="lazy"
-         decoding="async">
-  </div>
-</div>
+ 
           <h3 class="mini-title">Mapa</h3>
           <div class="map">
             <iframe
@@ -236,20 +225,7 @@
     safeHref($("linePhone2"), telHref2);
   }
 
-  // ===== Map (flag) =====
-  if (F.showMap === false) {
-    if ($("mapMini")) $("mapMini").style.display = "none";
-  } else {
-    const mapEmbed = SITE.map?.embedUrl || "";
-    const mapOpen  = SITE.map?.openUrl || "";
-    if (mapEmbed) {
-      if ($("mapFrame")) $("mapFrame").src = mapEmbed;
-      safeHref($("mapLink"), mapOpen || mapEmbed);
-    } else {
-      if ($("mapFrame")) $("mapFrame").src = "about:blank";
-      if ($("mapLink")) $("mapLink").style.display = "none";
-    }
-  }
+ 
 
   // ===== Socials (flag) =====
   const socials = $("socials");
