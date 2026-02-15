@@ -300,52 +300,49 @@ safeSrc($("galleryImg"), SITE.assets?.gallery || "./assets/mapphoto.png");
     if ($("year")) $("year").textContent = new Date().getFullYear();
 
     // ===== Apply language (if i18n exists) =====
-    function applyLang(){
-      if (!SITE.i18n) {
-        // igual renderiza servicios con el idioma actual por si existe items.en/items.es
-        renderServices();
-        return;
-      }
+   function applyLang(){
+  // si no hay i18n, igual renderiza services + nav
+  if (!SITE.i18n) {
+    renderServices();
+    renderNav();
+    return;
+  }
 
-      const lang = getLang();
-      paintLangButtons(lang);
+  const lang = getLang();
+  paintLangButtons(lang);
 
-      // Header/brand
-      const brandText = t("brand");
-      if (brandText) {
-        document.title = brandText;
-        safeText($("footerBrand"), brandText);
-      }
-      const tagline = t("tagline");
-      if (tagline) safeText($("tagline"), tagline);
+  const brandText = t("brand");
+  if (brandText) {
+    document.title = brandText;
+    safeText($("footerBrand"), brandText);
+  }
 
-      // Hero
-      const hk = t("heroKicker"); if (hk) safeText($("kicker"), hk);
-      const ht = t("heroTitle");  if (ht) safeText($("heroTitle"), ht);
-      const hx = t("heroText");   if (hx) safeText($("heroText"), hx);
+  const tagline = t("tagline");
+  if (tagline) safeText($("tagline"), tagline);
 
-      // Sections
-      const st = t("servicesTitle"); if (st) safeText($("servicesTitle"), st);
-      const sl = t("servicesLead");  if (sl) safeText($("servicesLead"), sl);
-      const ct = t("contactTitle");  if (ct) safeText($("contactTitle"), ct);
-      const cl = t("contactLead");   if (cl) safeText($("contactLead"), cl);
+  const hk = t("heroKicker"); if (hk) safeText($("kicker"), hk);
+  const ht = t("heroTitle");  if (ht) safeText($("heroTitle"), ht);
+  const hx = t("heroText");   if (hx) safeText($("heroText"), hx);
 
-      // Labels
-      const p1 = t("phone1Label"); if (p1) safeText($("phone1Label"), p1);
-      const p2 = t("phone2Label"); if (p2) safeText($("phone2Label"), p2);
+  const st = t("servicesTitle"); if (st) safeText($("servicesTitle"), st);
+  const sl = t("servicesLead");  if (sl) safeText($("servicesLead"), sl);
+  const ct = t("contactTitle");  if (ct) safeText($("contactTitle"), ct);
+  const cl = t("contactLead");   if (cl) safeText($("contactLead"), cl);
 
-      // Sticky buttons
-      const callBtn = t("callBtn"); if (callBtn) safeText($("sCall"), callBtn);
-      const waBtn   = t("waBtn");   if (waBtn) safeText($("sWhats"), waBtn);
+  const p1 = t("phone1Label"); if (p1) safeText($("phone1Label"), p1);
+  const p2 = t("phone2Label"); if (p2) safeText($("phone2Label"), p2);
 
-      // Gallery title optional
-      const gt = t("galleryTitle"); if (gt) safeText($("galleryTitle"), gt);
+  const callBtn = t("callBtn"); if (callBtn) safeText($("sCall"), callBtn);
+  const waBtn   = t("waBtn");   if (waBtn) safeText($("sWhats"), waBtn);
 
-      document.documentElement.lang = lang;
+  const gt = t("galleryTitle"); if (gt) safeText($("galleryTitle"), gt);
 
-      // Re-render services in selected language
-      renderServices();
-    }
+  document.documentElement.lang = lang;
+
+  renderServices();
+  renderNav();   // ✅ IMPORTANTE
+}
+
 
     // ===== Language buttons =====
     $("langEN")?.addEventListener("click", () => {
@@ -414,6 +411,8 @@ function renderNav(){
 
     // ===== First paint =====
     applyLang();
+renderNav();
+
   </script>
 <div class="gold-rain"></div>
 
