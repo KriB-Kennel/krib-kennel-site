@@ -357,6 +357,60 @@ safeSrc($("galleryImg"), SITE.assets?.gallery || "./assets/mapphoto.png");
       localStorage.setItem("lang","es");
       applyLang();
     });
+// ===== NAV (hamburger) =====
+function openNav(){ document.body.classList.add("nav-open"); }
+function closeNav(){ document.body.classList.remove("nav-open"); }
+
+$("navBtn")?.addEventListener("click", openNav);
+$("navClose")?.addEventListener("click", closeNav);
+$("navOverlay")?.addEventListener("click", closeNav);
+document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeNav(); });
+
+// Nav links desde config.js (con i18n)
+function navLabel(item){
+  // item.labelKey = "navHome" etc. (recomendado)
+  const key = item.labelKey;
+  if (key && SITE.i18n) return t(key) || item.label || "";
+  return item.label || "";
+}
+
+function renderNav(){
+  const nav = $("navLinks");
+  if(!nav) return;
+
+  // default nav si no existe en config
+  const items = SITE.nav?.items || [
+    { href:"./index.html#inicio", labelKey:"navHome", label:"Home" },
+    { href:"./index.html#servicios", labelKey:"navServices", label:"Services" },
+    { href:"./gallery.html", labelKey:"navGallery", label:"Gallery" },
+    { href:"./dogs.html", labelKey:"navDogs", label:"Dogs" },
+    { href:"./index.html#contacto", labelKey:"navContact", label:"Contact" },
+  ];
+
+  const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  nav.innerHTML = "";
+
+  items.forEach((it)=>{
+    const a = document.createElement("a");
+    a.href = it.href;
+
+    const targetFile = (it.href.split("#")[0].split("/").pop() || "index.html").toLowerCase();
+    if (targetFile === here) a.classList.add("active");
+
+    a.textContent = navLabel(it);
+    a.addEventListener("click", closeNav);
+    nav.appendChild(a);
+  });
+
+  // Botones rápidos dentro del menú
+  safeHref($("navCall"), telHref1);
+  safeHref($("navWhats"), waLink);
+  safeText($("navCall"), t("callBtn") || "Call");
+  safeText($("navWhats"), t("waBtn") || "WhatsApp");
+
+  // título menú
+  safeText($("navTitle"), t("navTitle") || "Menu");
+}
 
     // ===== First paint =====
     applyLang();
