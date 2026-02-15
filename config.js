@@ -198,7 +198,7 @@ const SITE = {
 
       galleryTitle: "Galería",
       galleryPageTitle: "Galería",
-      galleryPageLead: "Fotos de nuestros y ejemplares.",
+      galleryPageLead: "Fotos de nuestros ejemplares.",
 
       dogsTitle: "Canes",
       dogsLead: "Ejemplares destacados con pedigrí y descripción.",
