@@ -112,10 +112,10 @@ const SITE = {
     items: {
       en: [
         {
-          name: "Lex",
-          pedigree: "SG1 Lex VD Southernwind",
-          img: "./assets/dogs/lex.jpg",
-          desc: "SG1 Lex VD Southernwind is the embodiment of power, balance, and character. With outstanding temperament and rock-solid nerves, he combines strength and elegance in perfect harmony. His massive bone, powerful structure, and remarkably strong head are trademarks he consistently transmits to his offspring. Broad across the chest and hindquarters, with correct shoulder layback, strong feet, and firm pasterns, Lex stands as a model of anatomical excellence. Beyond structure, Lex shines through his incredible character with children, dogs, and puppies—a true testament to his stable, noble nature. His progeny carry forward not only his strength and beauty, but also his unmatched balance, intelligence, and loving temperament, making them ideal for family, work, and companionship."
+          name: "Dog 1",
+          pedigree: "????",
+          img: "./assets/dogs/Dog 1.jpg",
+          desc: "  Dog 1 Description.... Ingles "
         },
         { name: "Dog 2", pedigree: "Pedigree 2", img: "./assets/dogs/dog2.jpg", desc: "Description..." },
         { name: "Dog 3", pedigree: "Pedigree 3", img: "./assets/dogs/dog3.jpg", desc: "Description..." },
@@ -123,10 +123,10 @@ const SITE = {
       ],
       es: [
         {
-          name: "Lex",
-          pedigree: "SG1 Lex VD Southernwind",
-          img: "./assets/dogs/lex.jpg",
-          desc: "SG1 Lex VD Southernwind es la personificación de poder, balance y carácter... (si quieres la traduzco completa)."
+          name: "Dog 1",
+          pedigree: "????",
+          img: "./assets/dogs/Dog 1.jpg",
+          desc: "Descripción.... ESP"
         },
         { name: "Perro 2", pedigree: "Pedigrí 2", img: "./assets/dogs/dog2.jpg", desc: "Descripción..." },
         { name: "Perro 3", pedigree: "Pedigrí 3", img: "./assets/dogs/dog3.jpg", desc: "Descripción..." },
