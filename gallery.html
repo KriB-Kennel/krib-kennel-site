@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>KriB Kennel | Gallery</title>
+  <meta name="description" content="KriB Kennel Gallery." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./gold-rain.css" />
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="gold-rain" aria-hidden="true"></div>
+
+  <main class="wrap">
+
+    <!-- HEADER (igual que index) -->
+    <header class="card header">
+      <button class="navbtn" id="navBtn" type="button" aria-label="Menu">
+        <div class="navicon" aria-hidden="true"><span></span><span></span><span></span></div>
+      </button>
+
+      <img class="logo" id="logo" src="./assets/logo.png" alt="Logo" />
+      <div class="tagline" id="tagline">Servicio • Ciudad • Respuesta rápida</div>
+
+      <div class="lang">
+        <button class="langbtn" id="langEN" type="button">EN</button>
+        <button class="langbtn" id="langES" type="button">ES</button>
+      </div>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <aside class="nav-drawer" id="navDrawer" aria-label="Site navigation">
+      <div class="nav-top">
+        <div class="nav-title" id="navTitle">Menu</div>
+        <button class="nav-close" id="navClose" type="button" aria-label="Close">✕</button>
+      </div>
+      <nav class="nav-links" id="navLinks"></nav>
+      <div class="nav-foot">
+        <a class="sbtn primary" id="navCall" href="#">Llamar</a>
+        <a class="sbtn" id="navWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </aside>
+
+    <!-- GALLERY -->
+    <section class="card section">
+      <h2 class="section-title" id="galleryPageTitle">Galería</h2>
+      <p class="section-lead" id="galleryPageLead">Fotos de nuestras instalaciones, camadas, y ejemplares.</p>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="brand" id="footerBrand">KriB Kennel</div>
+      <div class="copy">
+        © <span id="year"></span> •
+        <a id="footerLink" href="#" target="_blank" rel="noopener">RaymondDevelop</a>
+      </div>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightboxImg" src="" alt="Gallery image" />
+  </div>
+
+  <nav class="sticky">
+    <a class="sbtn primary" id="sCall" href="#">Llamar</a>
+    <a class="sbtn" id="sWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+
+  <script src="./config.js"></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    function safeText(el, v){ if(el) el.textContent = v ?? ""; }
+    function safeHref(el, v){ if(el && v) el.href = v; }
+    function safeSrc(el, v){ if(el && v) el.src = v; }
+
+    const F = SITE.flags || {};
+    const root = document.documentElement.style;
+    Object.entries(SITE.colors || {}).forEach(([k,v]) => root.setProperty(`--${k}`, v));
+
+    document.title = SITE.meta?.title || document.title;
+
+    safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
+    if ($("logo")) $("logo").alt = SITE.brand || "Logo";
+    safeText($("tagline"), SITE.header?.tagline || "");
+
+    const tel1 = SITE.contact?.phone1 || "";
+    const tel1Clean = SITE.contact?.phone1E164 || "";
+    const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
+
+    const wa = SITE.contact?.whatsappE164 || "";
+    const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hello, I need information.");
+    const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
+
+    safeHref($("sCall"), telHref1);
+    safeHref($("sWhats"), waLink);
+
+    function getLang(){ return localStorage.getItem("lang") || SITE.defaultLang || "en"; }
+    function paintLangButtons(lang){
+      $("langEN")?.classList.toggle("active", lang === "en");
+      $("langES")?.classList.toggle("active", lang === "es");
+    }
+    function t(key){
+      const lang = getLang();
+      return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
+    }
+
+    // ===== NAV (same as index) =====
+    function openNav(){ document.body.classList.add("nav-open"); }
+    function closeNav(){ document.body.classList.remove("nav-open"); }
+    $("navBtn")?.addEventListener("click", openNav);
+    $("navClose")?.addEventListener("click", closeNav);
+    $("navOverlay")?.addEventListener("click", closeNav);
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeNav(); });
+
+    function navLabel(item){
+      const key = item.labelKey;
+      if (key && SITE.i18n) return t(key) || item.label || "";
+      return item.label || "";
+    }
+    function renderNav(){
+      const nav = $("navLinks");
+      if(!nav) return;
+      const items = SITE.nav?.items || [
+        { href:"./index.html#inicio", labelKey:"navHome", label:"Home" },
+        { href:"./index.html#servicios", labelKey:"navServices", label:"Services" },
+        { href:"./gallery.html", labelKey:"navGallery", label:"Gallery" },
+        { href:"./dogs.html", labelKey:"navDogs", label:"Dogs" },
+        { href:"./index.html#contacto", labelKey:"navContact", label:"Contact" },
+      ];
+      const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      nav.innerHTML = "";
+      items.forEach((it)=>{
+        const a = document.createElement("a");
+        a.href = it.href;
+        const targetFile = (it.href.split("#")[0].split("/").pop() || "index.html").toLowerCase();
+        if (targetFile === here) a.classList.add("active");
+        a.textContent = navLabel(it);
+        a.addEventListener("click", closeNav);
+        nav.appendChild(a);
+      });
+      safeHref($("navCall"), telHref1);
+      safeHref($("navWhats"), waLink);
+      safeText($("navCall"), t("callBtn") || "Call");
+      safeText($("navWhats"), t("waBtn") || "WhatsApp");
+      safeText($("navTitle"), t("navTitle") || "Menu");
+    }
+
+    // ===== GALLERY render =====
+    function renderGallery(){
+      const grid = $("galleryGrid");
+      if(!grid) return;
+
+      const lang = getLang();
+      const imgs =
+        SITE.gallery?.images?.[lang] ||
+        SITE.gallery?.images?.en ||
+        SITE.gallery?.images ||
+        [
+          "./assets/gallery/1.jpg",
+          "./assets/gallery/2.jpg",
+          "./assets/gallery/3.jpg",
+          "./assets/gallery/4.jpg",
+          "./assets/gallery/5.jpg",
+          "./assets/gallery/6.jpg",
+        ];
+
+      grid.innerHTML = "";
+      imgs.forEach((src, idx)=>{
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.setAttribute("aria-label", `Open image ${idx+1}`);
+        btn.innerHTML = `<img src="${src}" loading="lazy" decoding="async" alt="Gallery ${idx+1}">`;
+        btn.addEventListener("click", ()=>{
+          $("lightboxImg").src = src;
+          $("lightbox").classList.add("open");
+        });
+        grid.appendChild(btn);
+      });
+    }
+
+    // lightbox close
+    $("lightbox")?.addEventListener("click", ()=>{
+      $("lightbox")?.classList.remove("open");
+      $("lightboxImg").src = "";
+    });
+
+    function applyLang(){
+      const lang = getLang();
+      paintLangButtons(lang);
+
+      safeText($("galleryPageTitle"), t("galleryPageTitle") || "Gallery");
+      safeText($("galleryPageLead"), t("galleryPageLead") || "Photos of our facility, litters, and dogs.");
+
+      document.documentElement.lang = lang;
+      renderNav();
+      renderGallery();
+    }
+
+    $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
+    $("langES")?.addEventListener("click", () => { localStorage.setItem("lang","es"); applyLang(); });
+
+    safeText($("footerBrand"), SITE.brand || "KriB Kennel");
+    safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
+    safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
+    $("year").textContent = new Date().getFullYear();
+
+    applyLang();
+  </script>
+</body>
+</html>
