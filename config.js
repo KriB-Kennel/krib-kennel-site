@@ -31,7 +31,7 @@ const SITE = {
     // gallery: "./assets/mapphoto.png"
   },
 
-  header: { tagline: "Guaynabo • 9am–6pm • Puerto Rico" },
+  header: { tagline: "HOSPEDAJE • TRAINING • GROOMING" },
   hero: { kicker: "Dog Sales • Boarding • Training • Grooming", title: "KriB Kennel", text: "" },
 
   services: {
