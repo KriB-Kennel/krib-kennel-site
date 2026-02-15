@@ -36,15 +36,41 @@
 
   <main class="wrap">
     <!-- HEADER -->
-    <header class="card header">
-      <img class="logo" id="logo" src="./assets/logo.png" alt="Logo" />
-      <div class="tagline" id="tagline">Servicio • Ciudad • Respuesta rápida</div>
+   <header class="card header">
+  <!-- Hamburger -->
+  <button class="navbtn" id="navBtn" type="button" aria-label="Menu">
+    <div class="navicon" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  </button>
 
-      <div class="lang">
-        <button class="langbtn" id="langEN" type="button">EN</button>
-        <button class="langbtn" id="langES" type="button">ES</button>
-      </div>
-    </header>
+  <img class="logo" id="logo" src="./assets/logo.png" alt="Logo" />
+  <div class="tagline" id="tagline">Servicio • Ciudad • Respuesta rápida</div>
+
+  <div class="lang">
+    <button class="langbtn" id="langEN" type="button">EN</button>
+    <button class="langbtn" id="langES" type="button">ES</button>
+  </div>
+</header>
+
+<!-- NAV DRAWER -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+<aside class="nav-drawer" id="navDrawer" aria-label="Site navigation">
+  <div class="nav-top">
+    <div class="nav-title" id="navTitle">Menu</div>
+    <button class="nav-close" id="navClose" type="button" aria-label="Close">✕</button>
+  </div>
+
+  <nav class="nav-links" id="navLinks">
+    <!-- se llena con JS -->
+  </nav>
+
+  <div class="nav-foot">
+    <a class="sbtn primary" id="navCall" href="#">Llamar</a>
+    <a class="sbtn" id="navWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</aside>
 
     <!-- HERO -->
     <section class="card hero" id="inicio">
