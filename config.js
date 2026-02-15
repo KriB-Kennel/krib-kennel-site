@@ -1,55 +1,8 @@
 const SITE = {
-  defaultLang: "en", // idioma por defecto
+  defaultLang: "en",
 
-  // ===== Switch EN/ES =====
-  i18n: {
-    en: {
-      brand: "KriB Kennel",
-      tagline: "Dog Sales • Boarding • Training • Grooming",
+  brand: "KriB Kennel",
 
-      heroKicker: "Guaynabo • Puerto Rico •",
-      heroTitle: "KriB Kennel",
-      heroText: "Dog sales, boarding, training and grooming. Open 9am–6pm.",
-
-      servicesTitle: "Services",
-      servicesLead: "Everything your pet needs in one place.",
-
-      contactTitle: "Contact",
-      contactLead: "Call or message us on WhatsApp for availability and details.",
-
-      phone1Label: "Phone",
-      phone2Label: "Alternate",
-      mapLabel: "Open in Google Maps",
-
-      callBtn: "Call",
-      waBtn: "WhatsApp"
-    },
-
-    es: {
-      brand: "KriB Kennel",
-      tagline: "Hospedaje • Training • Grooming",
-
-      heroKicker: "Guaynabo • Puerto Rico •",
-      heroTitle: "KriB Kennel",
-      heroText: "Venta de perros, hospedaje, training y grooming. Atención 9am a 6pm.",
-
-      servicesTitle: "Servicios",
-      servicesLead: "Todo en un solo lugar para tu mascota.",
-
-      contactTitle: "Contacto",
-      contactLead: "Llámanos o escríbenos por WhatsApp para disponibilidad y detalles.",
-
-      phone1Label: "Teléfono",
-      phone2Label: "Alterno",
-      mapLabel: "Abrir en Google Maps",
-
-      callBtn: "Llamar",
-      waBtn: "WhatsApp"
-    }
-  },
-
-  // ===== Opciones visuales =====
-  brand: "KriB Kennel", // (se usa también si i18n no está)
   flags: {
     showPhoto: true,
     showPhone2: false,
@@ -73,14 +26,14 @@ const SITE = {
   assets: {
     logo: "./assets/logo.png",
     hero: "./assets/hero.png",
-    photo: "./assets/photo.jpg"
+    photo: "./assets/photo.jpg",
+    // opcional si quieres controlar la mini del index:
+    // gallery: "./assets/mapphoto.png"
   },
 
-  // Estos quedan como fallback si i18n no existiera
   header: { tagline: "Guaynabo • 9am–6pm • Puerto Rico" },
   hero: { kicker: "Dog Sales • Boarding • Training • Grooming", title: "KriB Kennel", text: "" },
 
-  // Servicios (si quieres que también sean bilingües, usa items.en / items.es)
   services: {
     items: {
       en: [
@@ -99,7 +52,6 @@ const SITE = {
   },
 
   contactSection: {
-    // (labels se cambian por i18n)
     title: "Contact",
     lead: "Call or message us on WhatsApp for availability and details."
   },
@@ -124,94 +76,137 @@ const SITE = {
   footer: {
     companyLabel: "RaymondDevelop",
     companyUrl: "https://www.raymonddevelop.com"
-  }
-  nav:{
-  items:[
-    { href:"./index.html#inicio",    labelKey:"navHome",     label:"Home" },
-    { href:"./index.html#servicios", labelKey:"navServices", label:"Services" },
-    { href:"./gallery.html",        labelKey:"navGallery",  label:"Gallery" },
-    { href:"./dogs.html",           labelKey:"navDogs",     label:"Dogs" },
-    { href:"./index.html#contacto", labelKey:"navContact",  label:"Contact" },
-  ]
-},
-
-gallery:{
-  images:{
-    en:[
-      "./assets/gallery/1.jpg",
-      "./assets/gallery/2.jpg",
-      "./assets/gallery/3.jpg",
-      "./assets/gallery/4.jpg",
-      "./assets/gallery/5.jpg",
-      "./assets/gallery/6.jpg",
-    ],
-    es:[
-      "./assets/gallery/1.jpg",
-      "./assets/gallery/2.jpg",
-      "./assets/gallery/3.jpg",
-      "./assets/gallery/4.jpg",
-      "./assets/gallery/5.jpg",
-      "./assets/gallery/6.jpg",
-    ]
-  }
-},
-
-dogs:{
-  items:{
-    en:[
-      {
-        name:"Lex",
-        pedigree:"SG1 Lex VD Southernwind",
-        img:"./assets/dogs/lex.jpg",
-        desc:"SG1 Lex VD Southernwind is the embodiment of power, balance, and character. With outstanding temperament and rock-solid nerves, he combines strength and elegance in perfect harmony. His massive bone, powerful structure, and remarkably strong head are trademarks he consistently transmits to his offspring. Broad across the chest and hindquarters, with correct shoulder layback, strong feet, and firm pasterns, Lex stands as a model of anatomical excellence. Beyond structure, Lex shines through his incredible character with children, dogs, and puppies—a true testament to his stable, noble nature. His progeny carry forward not only his strength and beauty, but also his unmatched balance, intelligence, and loving temperament, making them ideal for family, work, and companionship."
-      },
-      { name:"Dog 2", pedigree:"Pedigree 2", img:"./assets/dogs/dog2.jpg", desc:"Description..." },
-      { name:"Dog 3", pedigree:"Pedigree 3", img:"./assets/dogs/dog3.jpg", desc:"Description..." },
-      { name:"Dog 4", pedigree:"Pedigree 4", img:"./assets/dogs/dog4.jpg", desc:"Description..." }
-    ],
-    es:[
-      {
-        name:"Lex",
-        pedigree:"SG1 Lex VD Southernwind",
-        img:"./assets/dogs/lex.jpg",
-        desc:"(Traducción al español aquí si la quieres.)"
-      },
-      { name:"Perro 2", pedigree:"Pedigrí 2", img:"./assets/dogs/dog2.jpg", desc:"Descripción..." },
-      { name:"Perro 3", pedigree:"Pedigrí 3", img:"./assets/dogs/dog3.jpg", desc:"Descripción..." },
-      { name:"Perro 4", pedigree:"Pedigrí 4", img:"./assets/dogs/dog4.jpg", desc:"Descripción..." }
-    ]
-  }
-},
-
-i18n:{
-  en:{
-    navTitle:"Menu",
-    navHome:"Home",
-    navServices:"Services",
-    navGallery:"Gallery",
-    navDogs:"Dogs",
-    navContact:"Contact",
-    galleryPageTitle:"Gallery",
-    galleryPageLead:"Photos of our facility, litters, and dogs.",
-    dogsTitle:"Dogs",
-    dogsLead:"Featured dogs with pedigree and description.",
-    callBtn:"Call",
-    waBtn:"WhatsApp"
   },
-  es:{
-    navTitle:"Menú",
-    navHome:"Inicio",
-    navServices:"Servicios",
-    navGallery:"Galería",
-    navDogs:"Canes",
-    navContact:"Contacto",
-    galleryPageTitle:"Galería",
-    galleryPageLead:"Fotos de nuestras instalaciones, camadas y ejemplares.",
-    dogsTitle:"Canes",
-    dogsLead:"Ejemplares destacados con pedigrí y descripción.",
-    callBtn:"Llamar",
-    waBtn:"WhatsApp"
-  }
-}
 
+  // ✅ COMA ARRIBA ARREGLADA + nav correcto
+  nav: {
+    items: [
+      { href: "./index.html#inicio",    labelKey: "navHome",     label: "Home" },
+      { href: "./index.html#servicios", labelKey: "navServices", label: "Services" },
+      { href: "./gallery.html",        labelKey: "navGallery",  label: "Gallery" },
+      { href: "./dogs.html",           labelKey: "navDogs",     label: "Dogs" },
+      { href: "./index.html#contacto", labelKey: "navContact",  label: "Contact" }
+    ]
+  },
+
+  gallery: {
+    images: {
+      en: [
+        "./assets/gallery/1.jpg",
+        "./assets/gallery/2.jpg",
+        "./assets/gallery/3.jpg",
+        "./assets/gallery/4.jpg",
+        "./assets/gallery/5.jpg",
+        "./assets/gallery/6.jpg"
+      ],
+      es: [
+        "./assets/gallery/1.jpg",
+        "./assets/gallery/2.jpg",
+        "./assets/gallery/3.jpg",
+        "./assets/gallery/4.jpg",
+        "./assets/gallery/5.jpg",
+        "./assets/gallery/6.jpg"
+      ]
+    }
+  },
+
+  dogs: {
+    items: {
+      en: [
+        {
+          name: "Lex",
+          pedigree: "SG1 Lex VD Southernwind",
+          img: "./assets/dogs/lex.jpg",
+          desc: "SG1 Lex VD Southernwind is the embodiment of power, balance, and character. With outstanding temperament and rock-solid nerves, he combines strength and elegance in perfect harmony. His massive bone, powerful structure, and remarkably strong head are trademarks he consistently transmits to his offspring. Broad across the chest and hindquarters, with correct shoulder layback, strong feet, and firm pasterns, Lex stands as a model of anatomical excellence. Beyond structure, Lex shines through his incredible character with children, dogs, and puppies—a true testament to his stable, noble nature. His progeny carry forward not only his strength and beauty, but also his unmatched balance, intelligence, and loving temperament, making them ideal for family, work, and companionship."
+        },
+        { name: "Dog 2", pedigree: "Pedigree 2", img: "./assets/dogs/dog2.jpg", desc: "Description..." },
+        { name: "Dog 3", pedigree: "Pedigree 3", img: "./assets/dogs/dog3.jpg", desc: "Description..." },
+        { name: "Dog 4", pedigree: "Pedigree 4", img: "./assets/dogs/dog4.jpg", desc: "Description..." }
+      ],
+      es: [
+        {
+          name: "Lex",
+          pedigree: "SG1 Lex VD Southernwind",
+          img: "./assets/dogs/lex.jpg",
+          desc: "SG1 Lex VD Southernwind es la personificación de poder, balance y carácter... (si quieres la traduzco completa)."
+        },
+        { name: "Perro 2", pedigree: "Pedigrí 2", img: "./assets/dogs/dog2.jpg", desc: "Descripción..." },
+        { name: "Perro 3", pedigree: "Pedigrí 3", img: "./assets/dogs/dog3.jpg", desc: "Descripción..." },
+        { name: "Perro 4", pedigree: "Pedigrí 4", img: "./assets/dogs/dog4.jpg", desc: "Descripción..." }
+      ]
+    }
+  },
+
+  // ✅ UN SOLO i18n con TODO junto
+  i18n: {
+    en: {
+      brand: "KriB Kennel",
+      tagline: "Dog Sales • Boarding • Training • Grooming",
+
+      heroKicker: "Guaynabo • Puerto Rico •",
+      heroTitle: "KriB Kennel",
+      heroText: "Dog sales, boarding, training and grooming. Open 9am–6pm.",
+
+      servicesTitle: "Services",
+      servicesLead: "Everything your pet needs in one place.",
+
+      contactTitle: "Contact",
+      contactLead: "Call or message us on WhatsApp for availability and details.",
+
+      phone1Label: "Phone",
+      phone2Label: "Alternate",
+
+      navTitle: "Menu",
+      navHome: "Home",
+      navServices: "Services",
+      navGallery: "Gallery",
+      navDogs: "Dogs",
+      navContact: "Contact",
+
+      galleryTitle: "Gallery",
+      galleryPageTitle: "Gallery",
+      galleryPageLead: "Photos of our facility, litters, and dogs.",
+
+      dogsTitle: "Dogs",
+      dogsLead: "Featured dogs with pedigree and description.",
+
+      callBtn: "Call",
+      waBtn: "WhatsApp"
+    },
+
+    es: {
+      brand: "KriB Kennel",
+      tagline: "Hospedaje • Training • Grooming",
+
+      heroKicker: "Guaynabo • Puerto Rico •",
+      heroTitle: "KriB Kennel",
+      heroText: "Venta de perros, hospedaje, training y grooming. Atención 9am a 6pm.",
+
+      servicesTitle: "Servicios",
+      servicesLead: "Todo en un solo lugar para tu mascota.",
+
+      contactTitle: "Contacto",
+      contactLead: "Llámanos o escríbenos por WhatsApp para disponibilidad y detalles.",
+
+      phone1Label: "Teléfono",
+      phone2Label: "Alterno",
+
+      navTitle: "Menú",
+      navHome: "Inicio",
+      navServices: "Servicios",
+      navGallery: "Galería",
+      navDogs: "Canes",
+      navContact: "Contacto",
+
+      galleryTitle: "Galería",
+      galleryPageTitle: "Galería",
+      galleryPageLead: "Fotos de nuestras instalaciones, camadas y ejemplares.",
+
+      dogsTitle: "Canes",
+      dogsLead: "Ejemplares destacados con pedigrí y descripción.",
+
+      callBtn: "Llamar",
+      waBtn: "WhatsApp"
+    }
+  }
 };
