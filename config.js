@@ -163,7 +163,7 @@ const SITE = {
 
       galleryTitle: "Gallery",
       galleryPageTitle: "Gallery",
-      galleryPageLead: "Photos of our facility, litters, and dogs.",
+      galleryPageLead: "Photos of our dogs.",
 
       dogsTitle: "Dogs",
       dogsLead: "Featured dogs with pedigree and description.",
@@ -198,7 +198,7 @@ const SITE = {
 
       galleryTitle: "Galería",
       galleryPageTitle: "Galería",
-      galleryPageLead: "Fotos de nuestras instalaciones, camadas y ejemplares.",
+      galleryPageLead: "Fotos de nuestros y ejemplares.",
 
       dogsTitle: "Canes",
       dogsLead: "Ejemplares destacados con pedigrí y descripción.",
