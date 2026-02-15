@@ -82,10 +82,8 @@ const SITE = {
   nav: {
     items: [
       { href: "./index.html#inicio",    labelKey: "navHome",     label: "Home" },
-      { href: "./index.html#servicios", labelKey: "navServices", label: "Services" },
       { href: "./gallery.html",        labelKey: "navGallery",  label: "Gallery" },
       { href: "./dogs.html",           labelKey: "navDogs",     label: "Dogs" },
-      { href: "./index.html#contacto", labelKey: "navContact",  label: "Contact" }
     ]
   },
 
