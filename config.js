@@ -125,4 +125,93 @@ const SITE = {
     companyLabel: "RaymondDevelop",
     companyUrl: "https://www.raymonddevelop.com"
   }
+  nav:{
+  items:[
+    { href:"./index.html#inicio",    labelKey:"navHome",     label:"Home" },
+    { href:"./index.html#servicios", labelKey:"navServices", label:"Services" },
+    { href:"./gallery.html",        labelKey:"navGallery",  label:"Gallery" },
+    { href:"./dogs.html",           labelKey:"navDogs",     label:"Dogs" },
+    { href:"./index.html#contacto", labelKey:"navContact",  label:"Contact" },
+  ]
+},
+
+gallery:{
+  images:{
+    en:[
+      "./assets/gallery/1.jpg",
+      "./assets/gallery/2.jpg",
+      "./assets/gallery/3.jpg",
+      "./assets/gallery/4.jpg",
+      "./assets/gallery/5.jpg",
+      "./assets/gallery/6.jpg",
+    ],
+    es:[
+      "./assets/gallery/1.jpg",
+      "./assets/gallery/2.jpg",
+      "./assets/gallery/3.jpg",
+      "./assets/gallery/4.jpg",
+      "./assets/gallery/5.jpg",
+      "./assets/gallery/6.jpg",
+    ]
+  }
+},
+
+dogs:{
+  items:{
+    en:[
+      {
+        name:"Lex",
+        pedigree:"SG1 Lex VD Southernwind",
+        img:"./assets/dogs/lex.jpg",
+        desc:"SG1 Lex VD Southernwind is the embodiment of power, balance, and character. With outstanding temperament and rock-solid nerves, he combines strength and elegance in perfect harmony. His massive bone, powerful structure, and remarkably strong head are trademarks he consistently transmits to his offspring. Broad across the chest and hindquarters, with correct shoulder layback, strong feet, and firm pasterns, Lex stands as a model of anatomical excellence. Beyond structure, Lex shines through his incredible character with children, dogs, and puppies—a true testament to his stable, noble nature. His progeny carry forward not only his strength and beauty, but also his unmatched balance, intelligence, and loving temperament, making them ideal for family, work, and companionship."
+      },
+      { name:"Dog 2", pedigree:"Pedigree 2", img:"./assets/dogs/dog2.jpg", desc:"Description..." },
+      { name:"Dog 3", pedigree:"Pedigree 3", img:"./assets/dogs/dog3.jpg", desc:"Description..." },
+      { name:"Dog 4", pedigree:"Pedigree 4", img:"./assets/dogs/dog4.jpg", desc:"Description..." }
+    ],
+    es:[
+      {
+        name:"Lex",
+        pedigree:"SG1 Lex VD Southernwind",
+        img:"./assets/dogs/lex.jpg",
+        desc:"(Traducción al español aquí si la quieres.)"
+      },
+      { name:"Perro 2", pedigree:"Pedigrí 2", img:"./assets/dogs/dog2.jpg", desc:"Descripción..." },
+      { name:"Perro 3", pedigree:"Pedigrí 3", img:"./assets/dogs/dog3.jpg", desc:"Descripción..." },
+      { name:"Perro 4", pedigree:"Pedigrí 4", img:"./assets/dogs/dog4.jpg", desc:"Descripción..." }
+    ]
+  }
+},
+
+i18n:{
+  en:{
+    navTitle:"Menu",
+    navHome:"Home",
+    navServices:"Services",
+    navGallery:"Gallery",
+    navDogs:"Dogs",
+    navContact:"Contact",
+    galleryPageTitle:"Gallery",
+    galleryPageLead:"Photos of our facility, litters, and dogs.",
+    dogsTitle:"Dogs",
+    dogsLead:"Featured dogs with pedigree and description.",
+    callBtn:"Call",
+    waBtn:"WhatsApp"
+  },
+  es:{
+    navTitle:"Menú",
+    navHome:"Inicio",
+    navServices:"Servicios",
+    navGallery:"Galería",
+    navDogs:"Canes",
+    navContact:"Contacto",
+    galleryPageTitle:"Galería",
+    galleryPageLead:"Fotos de nuestras instalaciones, camadas y ejemplares.",
+    dogsTitle:"Canes",
+    dogsLead:"Ejemplares destacados con pedigrí y descripción.",
+    callBtn:"Llamar",
+    waBtn:"WhatsApp"
+  }
+}
+
 };
