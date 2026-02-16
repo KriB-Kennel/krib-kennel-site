@@ -180,6 +180,12 @@ studs:{
   }
 },
 
+  // ===== PUPPIES (YouTube) =====
+  puppiesVideo: {
+    // Pega aquí el link de YouTube (o solo el ID si quieres)
+    url: "https://youtube.com/shorts/zyOKxrBLl5o?si=NI7AbGasIl15-8bj"
+    // ejemplo: "https://youtu.be/abc123XYZ"
+  },
 
 
   dogs: {
@@ -238,6 +244,12 @@ studs:{
 navFemales:"Females",
 navPuppies:"Puppies Available",
 navPlanned:"Planned Litters",
+     
+      puppiesTitle: "Puppies Available",
+      puppiesLead: "Latest puppy video and updates.",
+
+      comingSoonTitle: "Coming Soon",
+      comingSoonText: "Updates will be posted here soon.",
 
       galleryTitle: "Gallery",
       galleryPageTitle: "Gallery",
@@ -282,6 +294,13 @@ femalesLead:"Featured females with pedigree and description.",
 navFemales:"Hembras",
 navPuppies:"Cachorros Disponibles",
 navPlanned:"Camadas Planificadas",
+
+            puppiesTitle: "Cachorros Disponibles",
+      puppiesLead: "Video de cachorro y actualizaciones.",
+
+      comingSoonTitle: "Próximamente",
+      comingSoonText: "Pronto publicaremos actualizaciones aquí.",
+
 
 
       galleryTitle: "Galería",
