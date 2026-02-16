@@ -251,6 +251,9 @@ studsLead: "Featured stud with pedigree and description.",
       dogsTitle: "Dogs",
       dogsLead: "Featured dogs with pedigree and description.",
 
+femalesLead:"Featured females with pedigree and description.",
+
+      
       callBtn: "Call",
       waBtn: "WhatsApp"
     },
@@ -289,6 +292,9 @@ navPlanned:"Camadas Planificadas",
       galleryPageLead: "Fotos de nuestros ejemplares.",
 studsTitle: "Padrotes",
 studsLead: "Padrote destacado con pedigrí y descripción.",
+
+      femalesLead:"Hembras destacadas con pedigrí y descripción.",
+
 
       dogsTitle: "Canes",
       dogsLead: "Ejemplares destacados con pedigrí y descripción.",
