@@ -165,6 +165,10 @@ nav: {
       navGallery: "Gallery",
       navDogs: "Dogs",
       navContact: "Contact",
+      navStuds:"Studs",
+navFemales:"Females",
+navPuppies:"Puppies",
+navPlanned:"Planned Litters",
 
       galleryTitle: "Gallery",
       galleryPageTitle: "Gallery",
@@ -200,6 +204,11 @@ nav: {
       navGallery: "Galería",
       navDogs: "Canes",
       navContact: "Contacto",
+      navStuds:"Padrotes",
+navFemales:"Hembras",
+navPuppies:"Cachorros",
+navPlanned:"Camadas Planificadas",
+
 
       galleryTitle: "Galería",
       galleryPageTitle: "Galería",
