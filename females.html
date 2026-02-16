@@ -232,7 +232,7 @@ safeText($("studsLead"),  t("femalesLead") || "Featured females with pedigree an
 document.title = `KriB Kennel | ${t("navFemales") || "Females"}`;
 
       renderNav();
-      renderStud();
+renderFemales();
     }
 
     $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
