@@ -197,6 +197,9 @@
     function applyLang(){
       const lang = getLang();
       paintLangButtons(lang);
+      
+      const tagline = t("tagline");
+  if (tagline) safeText($("tagline"), tagline);
 
       safeText($("galleryPageTitle"), t("galleryPageTitle") || "Gallery");
       safeText($("galleryPageLead"), t("galleryPageLead") || "Photos of our facility, litters, and dogs.");
