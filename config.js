@@ -133,6 +133,57 @@ studs:{
     ]
   }
 },
+  females:{
+  items:{
+    en:[
+      {
+        name:"Luna",
+        pedigree:"(Pedigree here)",
+        img:"./assets/dogs/luna.jpg",
+        certImg:"./assets/pedigree/luna-certificate.jpg",
+        desc:"(English description here)"
+      },
+      {
+        name:"Female 2",
+        pedigree:"(Pedigree here)",
+        img:"./assets/dogs/female2.jpg",
+        certImg:"./assets/pedigree/female2-certificate.jpg",
+        desc:"(English description here)"
+      },
+      {
+        name:"Female 3",
+        pedigree:"(Pedigree here)",
+        img:"./assets/dogs/female3.jpg",
+        certImg:"./assets/pedigree/female3-certificate.jpg",
+        desc:"(English description here)"
+      }
+    ],
+    es:[
+      {
+        name:"Luna",
+        pedigree:"(Pedigrí aquí)",
+        img:"./assets/dogs/luna.jpg",
+        certImg:"./assets/pedigree/luna-certificate.jpg",
+        desc:"(Descripción en español aquí)"
+      },
+      {
+        name:"Hembra 2",
+        pedigree:"(Pedigrí aquí)",
+        img:"./assets/dogs/female2.jpg",
+        certImg:"./assets/pedigree/female2-certificate.jpg",
+        desc:"(Descripción en español aquí)"
+      },
+      {
+        name:"Hembra 3",
+        pedigree:"(Pedigrí aquí)",
+        img:"./assets/dogs/female3.jpg",
+        certImg:"./assets/pedigree/female3-certificate.jpg",
+        desc:"(Descripción en español aquí)"
+      }
+    ]
+  }
+},
+
 
   dogs: {
     items: {
