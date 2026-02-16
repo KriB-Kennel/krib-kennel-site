@@ -86,7 +86,7 @@ nav: {
 
     { href: "./studs.html", labelKey: "navStuds", label: "Studs" },
     { href: "./females.html", labelKey: "navFemales", label: "Females" },
-    { href: "./puppies.html", labelKey: "navPuppies", label: "Puppies" },
+    { href: "./puppies.html", labelKey: "navPuppies", label: "Puppies Available" },
     { href: "./planned.html", labelKey: "navPlanned", label: "Planned Litters" }
   ]
 },
@@ -167,7 +167,7 @@ nav: {
       navContact: "Contact",
       navStuds:"Studs",
 navFemales:"Females",
-navPuppies:"Puppies",
+navPuppies:"Puppies Available",
 navPlanned:"Planned Litters",
 
       galleryTitle: "Gallery",
@@ -206,7 +206,7 @@ navPlanned:"Planned Litters",
       navContact: "Contacto",
       navStuds:"Padrotes",
 navFemales:"Hembras",
-navPuppies:"Cachorros",
+navPuppies:"Cachorros Disponibles",
 navPlanned:"Camadas Planificadas",
 
 
