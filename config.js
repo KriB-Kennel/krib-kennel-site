@@ -146,7 +146,7 @@ studs:{
       {
         name:"SAŠKA",
         pedigree:"(SAŠKA OD STOJKOVICA)",
-        img:"./assets/dogs/hero.png",
+        img:"./assets/hero.png",
         certImg:"./assets/pedigree/female2-certificate.jpg",
         desc:"(English description here)"
       },
@@ -167,9 +167,9 @@ studs:{
         desc:"(Descripción en español aquí)"
       },
       {
-        name:"Hembra 2",
-        pedigree:"(Pedigrí aquí)",
-        img:"./assets/dogs/female2.jpg",
+        name:"SAŠKA",
+        pedigree:"(SAŠKA OD STOJKOVICA)",
+        img:"./assets/hero.png",
         certImg:"./assets/pedigree/female2-certificate.jpg",
         desc:"(Descripción en español aquí)"
       },
