@@ -138,7 +138,7 @@ studs:{
     en:[
       {
         name:"Luna",
-        pedigree:"(Pedigree here)",
+        pedigree:"(LUNA VOM KRIB)",
         img:"./assets/dogs/luna.jpg",
         certImg:"./assets/pedigree/luna-certificate.jpg",
         desc:"(English description here)"
@@ -161,7 +161,7 @@ studs:{
     es:[
       {
         name:"Luna",
-        pedigree:"(Pedigrí aquí)",
+        pedigree:"(LUNA VOM KRIB)",
         img:"./assets/dogs/luna.jpg",
         certImg:"./assets/pedigree/luna-certificate.jpg",
         desc:"(Descripción en español aquí)"
