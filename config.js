@@ -133,51 +133,53 @@ studs:{
     ]
   }
 },
-  females:{
-  items:{
-    en:[
+  females: {
+  items: {
+    en: [
       {
-        name:"Luna",
-        pedigree:"(LUNA VOM KRIB)",
-        img:"./assets/dogs/luna.jpg",
-        certImg:"./assets/pedigree/luna-certificate.jpg",
-        desc:"(Luna Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence.)"
+        name: "Luna",
+        pedigree: "(LUNA VOM KRIB)",
+        img: "./assets/dogs/luna.jpg",
+        certImg: "./assets/pedigree/luna-certificate.jpg",
+        desc: "(Luna Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence.)"
       },
       {
-        name:"SAŠKA",
-        pedigree:"(SAŠKA OD STOJKOVICA)",
-        img:"./assets/hero.png",
-        certImg:"./assets/pedigree/female2-certificate.jpg",
-        desc:"(Of excellent size, with an exceptional coat color and a stable, well-balanced temperament. She possesses strong, steady nerves and an outstanding disposition, making her an excellent service and companion dog. She is also an exceptional producer, consistently producing puppies with strong bone structure, impressive size, beautiful coloration, and a well-defined black mask that enhances their expression and presence.)
-      {
-        name:"Altea",
-        img:"./assets/dogs/female3.jpg",
-        desc:"(lol)"
+        name: "SAŠKA",
+        pedigree: "(SAŠKA OD STOJKOVICA)",
+        img: "./assets/hero.png",
+        certImg: "./assets/pedigree/female2-certificate.jpg",
+        desc: "(Of excellent size, with an exceptional coat color and a stable, well-balanced temperament. She possesses strong, steady nerves and an outstanding disposition, making her an excellent service and companion dog. She is also an exceptional producer, consistently producing puppies with strong bone structure, impressive size, beautiful coloration, and a well-defined black mask that enhances their expression and presence.)"
       },
+      {
+        name: "Altea",
+        img: "./assets/dogs/female3.jpg",
+        desc: "(lol)"
+      }
     ],
-    es:[
+    es: [
       {
-        name:"Luna",
-        pedigree:"(LUNA VOM KRIB)",
-        img:"./assets/dogs/luna.jpg",
-        certImg:"./assets/pedigree/luna-certificate.jpg",
-        desc:"(Luna De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente.)"
+        name: "Luna",
+        pedigree: "(LUNA VOM KRIB)",
+        img: "./assets/dogs/luna.jpg",
+        certImg: "./assets/pedigree/luna-certificate.jpg",
+        desc: "(Luna De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente.)"
       },
       {
-        name:"SAŠKA",
-        pedigree:"(SAŠKA OD STOJKOVICA)",
-        img:"./assets/hero.png",
-        certImg:"./assets/pedigree/female2-certificate.jpg",
-        desc:"(De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Es una excelente reproductora, produciendo cachorros con gran estructura ósea, tamaño imponente, hermoso color y una marcada máscara negra que resalta su expresión y presencia.)"
+        name: "SAŠKA",
+        pedigree: "(SAŠKA OD STOJKOVICA)",
+        img: "./assets/hero.png",
+        certImg: "./assets/pedigree/female2-certificate.jpg",
+        desc: "(De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Es una excelente reproductora, produciendo cachorros con gran estructura ósea, tamaño imponente, hermoso color y una marcada máscara negra que resalta su expresión y presencia.)"
       },
       {
-        name:"Altea",
-        img:"./assets/dogs/female3.jpg",
-        desc:"(lol)"
-      },
+        name: "Altea",
+        img: "./assets/dogs/female3.jpg",
+        desc: "(lol)"
+      }
     ]
   }
 },
+
 
 
   dogs: {
