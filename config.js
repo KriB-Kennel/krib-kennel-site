@@ -83,7 +83,6 @@ nav: {
   items: [
     { href: "./index.html#inicio", labelKey: "navHome", label: "Home" },
     { href: "./gallery.html", labelKey: "navGallery", label: "Gallery" },
-
     { href: "./studs.html", labelKey: "navStuds", label: "Studs" },
     { href: "./females.html", labelKey: "navFemales", label: "Females" },
     { href: "./puppies.html", labelKey: "navPuppies", label: "Puppies Available" },
@@ -112,6 +111,28 @@ nav: {
       ]
     }
   },
+studs:{
+  items:{
+    en:[
+      {
+        name:"Lex",
+        pedigree:"SG1 Lex VD Southernwind",
+        img:"./assets/dogs/lex.jpg",
+        certImg:"./assets/pedigree/lex-certificate.jpg",
+        desc:"SG1 Lex VD Southernwind is the embodiment of power, balance, and character..."
+      }
+    ],
+    es:[
+      {
+        name:"Lex",
+        pedigree:"SG1 Lex VD Southernwind",
+        img:"./assets/dogs/lex.jpg",
+        certImg:"./assets/pedigree/lex-certificate.jpg",
+        desc:"SG1 Lex VD Southernwind es la personificación de poder, balance y carácter..."
+      }
+    ]
+  }
+},
 
   dogs: {
     items: {
