@@ -79,13 +79,18 @@ const SITE = {
   },
 
   // ✅ COMA ARRIBA ARREGLADA + nav correcto
-  nav: {
-    items: [
-      { href: "./index.html#inicio",    labelKey: "navHome",     label: "Home" },
-      { href: "./gallery.html",        labelKey: "navGallery",  label: "Gallery" },
-      { href: "./dogs.html",           labelKey: "navDogs",     label: "Dogs" },
-    ]
-  },
+nav: {
+  items: [
+    { href: "./index.html#inicio", labelKey: "navHome", label: "Home" },
+    { href: "./gallery.html", labelKey: "navGallery", label: "Gallery" },
+
+    { href: "./studs.html", labelKey: "navStuds", label: "Studs" },
+    { href: "./females.html", labelKey: "navFemales", label: "Females" },
+    { href: "./puppies.html", labelKey: "navPuppies", label: "Puppies" },
+    { href: "./planned.html", labelKey: "navPlanned", label: "Planned Litters" }
+  ]
+},
+
 
   gallery: {
     images: {
