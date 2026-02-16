@@ -153,7 +153,7 @@ studs:{
         name:"Altea",
         img:"./assets/dogs/female3.jpg",
         desc:"(lol)"
-      }
+      },
     ],
     es:[
       {
@@ -174,7 +174,7 @@ studs:{
         name:"Altea",
         img:"./assets/dogs/female3.jpg",
         desc:"(lol)"
-      }
+      },
     ]
   }
 },
