@@ -144,9 +144,9 @@ studs:{
         desc:"(English description here)"
       },
       {
-        name:"Female 2",
-        pedigree:"(Pedigree here)",
-        img:"./assets/dogs/female2.jpg",
+        name:"SAŠKA",
+        pedigree:"(SAŠKA OD STOJKOVICA)",
+        img:"./assets/dogs/hero.png",
         certImg:"./assets/pedigree/female2-certificate.jpg",
         desc:"(English description here)"
       },
