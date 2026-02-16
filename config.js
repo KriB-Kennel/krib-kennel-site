@@ -173,7 +173,7 @@ studs:{
       },
       {
         name: "Altea",
-        img: "./assets/dogs/female3.jpg",
+        img: "./assets/dogs/female3.JPG",
         desc: "Hembra de excelente estructura, fuerte osamenta y gran presencia. Destaca por su hermoso manto rojo con máscara negra bien definida y una expresión firme y segura. De temperamento estable y equilibrado. Actualmente se encuentra retirada de la reproducción."
       }
     ]
