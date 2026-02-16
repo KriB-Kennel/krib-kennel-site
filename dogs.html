@@ -179,6 +179,10 @@
     function applyLang(){
       const lang = getLang();
       paintLangButtons(lang);
+      
+      const tagline = t("tagline");
+  if (tagline) safeText($("tagline"), tagline);
+
 
       safeText($("dogsTitle"), t("dogsTitle") || "Dogs");
       safeText($("dogsLead"), t("dogsLead") || "Featured dogs with pedigree and description.");
