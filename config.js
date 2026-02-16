@@ -141,20 +141,17 @@ studs:{
         pedigree:"(LUNA VOM KRIB)",
         img:"./assets/dogs/luna.jpg",
         certImg:"./assets/pedigree/luna-certificate.jpg",
-        desc:"(English description here)"
+        desc:"(Luna Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence.)"
       },
       {
         name:"SAŠKA",
         pedigree:"(SAŠKA OD STOJKOVICA)",
         img:"./assets/hero.png",
         certImg:"./assets/pedigree/female2-certificate.jpg",
-        desc:"(English description here)"
-      },
+        desc:"(Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence.)
       {
-        name:"Female 3",
-        pedigree:"(Pedigree here)",
+        name:"Altea",
         img:"./assets/dogs/female3.jpg",
-        certImg:"./assets/pedigree/female3-certificate.jpg",
         desc:"(English description here)"
       }
     ],
@@ -164,20 +161,18 @@ studs:{
         pedigree:"(LUNA VOM KRIB)",
         img:"./assets/dogs/luna.jpg",
         certImg:"./assets/pedigree/luna-certificate.jpg",
-        desc:"(Descripción en español aquí)"
+        desc:"(Luna De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente.)"
       },
       {
         name:"SAŠKA",
         pedigree:"(SAŠKA OD STOJKOVICA)",
         img:"./assets/hero.png",
         certImg:"./assets/pedigree/female2-certificate.jpg",
-        desc:"(Descripción en español aquí)"
+        desc:"(De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente.)"
       },
       {
-        name:"Hembra 3",
-        pedigree:"(Pedigrí aquí)",
+        name:"Altea",
         img:"./assets/dogs/female3.jpg",
-        certImg:"./assets/pedigree/female3-certificate.jpg",
         desc:"(Descripción en español aquí)"
       }
     ]
