@@ -141,7 +141,7 @@ studs:{
         pedigree: "(LUNA VOM KRIB)",
         img: "./assets/dogs/luna.jpg",
         certImg: "./assets/pedigree/luna-certificate.jpg",
-        desc: "Luna Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence."
+        desc: "Beautifully sized with an exceptional coat color and a stable, well-balanced temperament. She has steady nerves and an outstanding disposition, making her an excellent service and companion dog. Luna consistently produces puppies with strong bone structure, impressive size, and remarkable presence."
       },
       {
         name: "SAŠKA",
@@ -162,7 +162,7 @@ studs:{
         pedigree: "(LUNA VOM KRIB)",
         img: "./assets/dogs/luna.jpg",
         certImg: "./assets/pedigree/luna-certificate.jpg",
-        desc: "Luna De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente."
+        desc: "De excelente tamaño, con un color de pelaje excepcional y un temperamento estable y equilibrado. Posee nervios firmes y una disposición extraordinaria, lo que la convierte en una excelente perra de servicio y compañía. Luna produce cachorros con gran estructura ósea, tamaño imponente y una presencia sobresaliente."
       },
       {
         name: "SAŠKA",
