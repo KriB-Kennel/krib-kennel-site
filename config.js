@@ -152,7 +152,7 @@ studs:{
       },
       {
         name: "Altea",
-        img: "./assets/dogs/female3.jpg",
+        img: "./assets/dogs/female3.JPG",
         desc: "Female of excellent structure, strong bone, and outstanding presence. She stands out for her beautiful rich red coat with a well-defined black mask and a confident, firm expression. Stable and well-balanced temperament. Currently retired from breeding."
       }
     ],
