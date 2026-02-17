@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>KriB Kennel | Dogs</title>
-  <meta name="description" content="KriB Kennel Dogs & Pedigree." />
+  <title>KriB Kennel | Puppies Available</title>
+  <meta name="description" content="KriB Kennel Puppies Available." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +37,7 @@
       </div>
     </header>
 
+    <!-- NAV DRAWER -->
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
     <aside class="nav-drawer" id="navDrawer" aria-label="Site navigation">
       <div class="nav-top">
@@ -45,18 +46,17 @@
       </div>
       <nav class="nav-links" id="navLinks"></nav>
       <div class="nav-foot">
-        <a class="sbtn primary" id="navCall" href="#">Llamar</a>
+        <a class="sbtn primary" id="navCall" href="#">Call</a>
         <a class="sbtn" id="navWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </aside>
 
-    <!-- DOGS -->
+    <!-- PUPPIES -->
     <section class="card section">
-<h2 class="section-title" id="puppiesTitle">Puppies Available</h2>
-<p class="section-lead" id="puppiesLead">Latest puppy video and updates.</p>
+      <h2 class="section-title" id="puppiesTitle">Puppies Available</h2>
+      <p class="section-lead" id="puppiesLead">Latest puppy video and updates.</p>
 
-<div class="dogs-grid" id="dogsGrid"></div>
-
+      <div class="dogs-grid" id="dogsGrid"></div>
     </section>
 
     <footer class="footer">
@@ -69,24 +69,28 @@
   </main>
 
   <nav class="sticky">
-    <a class="sbtn primary" id="sCall" href="#">Llamar</a>
+    <a class="sbtn primary" id="sCall" href="#">Call</a>
     <a class="sbtn" id="sWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
   </nav>
 
   <script src="./config.js"></script>
   <script>
+    // ===== Helpers =====
     const $ = (id) => document.getElementById(id);
     function safeText(el, v){ if(el) el.textContent = v ?? ""; }
     function safeHref(el, v){ if(el && v) el.href = v; }
     function safeSrc(el, v){ if(el && v) el.src = v; }
 
+    // ===== Apply CSS vars from config =====
     const root = document.documentElement.style;
     Object.entries(SITE.colors || {}).forEach(([k,v]) => root.setProperty(`--${k}`, v));
 
+    // ===== Header =====
     safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
     if ($("logo")) $("logo").alt = SITE.brand || "Logo";
     safeText($("tagline"), SITE.header?.tagline || "");
 
+    // ===== Contact links =====
     const tel1 = SITE.contact?.phone1 || "";
     const tel1Clean = SITE.contact?.phone1E164 || "";
     const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
@@ -98,7 +102,10 @@
     safeHref($("sCall"), telHref1);
     safeHref($("sWhats"), waLink);
 
-    function getLang(){ return localStorage.getItem("lang") || SITE.defaultLang || "en"; }
+    // ===== Language helpers =====
+    function getLang(){
+      return localStorage.getItem("lang") || SITE.defaultLang || "en";
+    }
     function paintLangButtons(lang){
       $("langEN")?.classList.toggle("active", lang === "en");
       $("langES")?.classList.toggle("active", lang === "es");
@@ -108,9 +115,10 @@
       return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
     }
 
-    // NAV
+    // ===== NAV (hamburger) =====
     function openNav(){ document.body.classList.add("nav-open"); }
     function closeNav(){ document.body.classList.remove("nav-open"); }
+
     $("navBtn")?.addEventListener("click", openNav);
     $("navClose")?.addEventListener("click", closeNav);
     $("navOverlay")?.addEventListener("click", closeNav);
@@ -121,188 +129,161 @@
       if (key && SITE.i18n) return t(key) || item.label || "";
       return item.label || "";
     }
+
     function renderNav(){
       const nav = $("navLinks");
       if(!nav) return;
-      const items = SITE.nav?.items || [
-        { href:"./index.html#inicio", labelKey:"navHome", label:"Home" },
-        { href:"./index.html#servicios", labelKey:"navServices", label:"Services" },
-        { href:"./gallery.html", labelKey:"navGallery", label:"Gallery" },
-        { href:"./dogs.html", labelKey:"navDogs", label:"Dogs" },
-        { href:"./index.html#contacto", labelKey:"navContact", label:"Contact" },
-      ];
+
+      const items = SITE.nav?.items || [];
       const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
       nav.innerHTML = "";
+
       items.forEach((it)=>{
         const a = document.createElement("a");
         a.href = it.href;
+
         const targetFile = (it.href.split("#")[0].split("/").pop() || "index.html").toLowerCase();
         if (targetFile === here) a.classList.add("active");
+
         a.textContent = navLabel(it);
         a.addEventListener("click", closeNav);
         nav.appendChild(a);
       });
+
       safeHref($("navCall"), telHref1);
       safeHref($("navWhats"), waLink);
       safeText($("navCall"), t("callBtn") || "Call");
       safeText($("navWhats"), t("waBtn") || "WhatsApp");
       safeText($("navTitle"), t("navTitle") || "Menu");
     }
-   function extractYouTubeId(input){
-  if(!input) return "";
-  const s = String(input).trim();
 
-  // id directo
-  if (/^[a-zA-Z0-9_-]{6,}$/.test(s) && !s.includes("http")) return s;
+    // ===== YouTube helpers (supports Shorts) =====
+    function extractYouTubeId(input){
+      if(!input) return "";
+      const s = String(input).trim();
 
-  // youtu.be/<id>
-  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
-  if (m1) return m1[1];
+      // id directo
+      if (/^[a-zA-Z0-9_-]{6,}$/.test(s) && !s.includes("http")) return s;
 
-  // youtube.com/shorts/<id>
-  const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
-  if (ms) return ms[1];
+      // youtu.be/<id>
+      const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+      if (m1) return m1[1];
 
-  // watch?v=<id>
-  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
-  if (m2) return m2[1];
+      // youtube.com/shorts/<id>
+      const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
+      if (ms) return ms[1];
 
-  // /embed/<id>
-  const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);
-  if (m3) return m3[1];
+      // watch?v=<id>
+      const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+      if (m2) return m2[1];
 
-  return "";
-}
+      // /embed/<id>
+      const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);
+      if (m3) return m3[1];
 
+      return "";
+    }
 
-function renderVideo(){
-  const frame = $("ytFrame");
-  const wrap = $("videoWrap");
-  if(!frame || !wrap) return;
+    // ===== Puppies (Card 1: video+desc, Cards 2-4: coming soon) =====
+    function renderPuppies(){
+      const grid = $("dogsGrid");
+      if(!grid) return;
 
-  const id = extractYouTubeId(SITE.puppiesVideo?.url || "");
-  if(!id){ wrap.style.display = "none"; return; }
-frame.src = "https://www.youtube-nocookie.com/embed/zyOKxrBLl5o";
-}
+      const lang = getLang();
 
+      const comingTitle = t("comingSoonTitle") || "Coming Soon";
+      const comingText  = t("comingSoonText")  || "Updates will be posted here soon.";
 
-function extractYouTubeId(input){
-  if(!input) return "";
-  const s = String(input).trim();
+      const videoId = extractYouTubeId(SITE.puppiesVideo?.url || "");
+      const videoDesc =
+        SITE.puppiesVideo?.desc?.[lang] ||
+        SITE.puppiesVideo?.desc?.en ||
+        "";
 
-  // id directo
-  if (/^[a-zA-Z0-9_-]{6,}$/.test(s) && !s.includes("http")) return s;
+      grid.innerHTML = "";
 
-  // youtu.be/<id>
-  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
-  if (m1) return m1[1];
+      // Card 1: video
+      const card1 = document.createElement("article");
+      card1.className = "dog";
+      card1.innerHTML = `
+        <div class="dog-body">
+          <h3 class="dog-name">${t("puppiesVideoTitle") || "Puppy Video"}</h3>
+          <p class="dog-ped">${t("puppiesVideoBadge") || ""}</p>
 
-  // youtube.com/shorts/<id>
-  const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
-  if (ms) return ms[1];
-
-  // watch?v=<id>
-  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
-  if (m2) return m2[1];
-
-  // /embed/<id>
-  const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);
-  if (m3) return m3[1];
-
-  return "";
-}
-
-function renderPuppies(){
-  const grid = $("dogsGrid");
-  if(!grid) return;
-
-  const lang = getLang();
-
-  const comingTitle = t("comingSoonTitle") || "Coming Soon";
-  const comingText  = t("comingSoonText")  || "Updates will be posted here soon.";
-
-  const videoId = extractYouTubeId(SITE.puppiesVideo?.url || "");
-  const videoDesc =
-    SITE.puppiesVideo?.desc?.[lang] ||
-    SITE.puppiesVideo?.desc?.en ||
-    "";
-
-  grid.innerHTML = "";
-
-  // ===== Card 1: VIDEO + descripción (estilo Females) =====
-  const card1 = document.createElement("article");
-  card1.className = "dog";
-  card1.innerHTML = `
-    <div class="dog-body">
-      <h3 class="dog-name">${t("puppiesVideoTitle") || "Puppy Video"}</h3>
-      <p class="dog-ped">${t("puppiesVideoBadge") || ""}</p>
-
-      <div class="photo" style="margin-top:10px;">
-        <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
-          ${videoId ? `
-            <iframe
-              title="Puppy Video"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0;"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              src="https://www.youtube-nocookie.com/embed/${videoId}"
-            ></iframe>
-          ` : `
-            <div style="padding:14px;">
-              ${comingText}
+          <div class="photo" style="margin-top:10px;">
+            <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
+              ${videoId ? `
+                <iframe
+                  title="Puppy Video"
+                  style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  src="https://www.youtube-nocookie.com/embed/${videoId}"
+                ></iframe>
+              ` : `
+                <div style="padding:14px;">${comingText}</div>
+              `}
             </div>
-          `}
+          </div>
+
+          ${videoDesc ? `<p class="dog-desc" style="margin-top:10px;">${videoDesc}</p>` : ``}
         </div>
-      </div>
+      `;
+      grid.appendChild(card1);
 
-      ${videoDesc ? `<p class="dog-desc" style="margin-top:10px;">${videoDesc}</p>` : ``}
-    </div>
-  `;
-  grid.appendChild(card1);
+      // Cards 2–4: coming soon
+      for(let i=0;i<3;i++){
+        const card = document.createElement("article");
+        card.className = "dog";
+        card.innerHTML = `
+          <div class="dog-body">
+            <h3 class="dog-name">${comingTitle}</h3>
+            <p class="dog-ped"></p>
+            <p class="dog-desc">${comingText}</p>
+          </div>
+        `;
+        grid.appendChild(card);
+      }
+    }
 
-  // ===== Cards 2–4: Coming Soon =====
-  for(let i=0;i<3;i++){
-    const card = document.createElement("article");
-    card.className = "dog";
-    card.innerHTML = `
-      <div class="dog-body">
-        <h3 class="dog-name">${comingTitle}</h3>
-        <p class="dog-ped"></p>
-        <p class="dog-desc">${comingText}</p>
-      </div>
-    `;
-    grid.appendChild(card);
-  }
-}
-
-
-
+    // ===== Apply language =====
     function applyLang(){
       const lang = getLang();
       paintLangButtons(lang);
-      
+
       const tagline = t("tagline");
-  if (tagline) safeText($("tagline"), tagline);
+      if (tagline) safeText($("tagline"), tagline);
 
+      safeText($("puppiesTitle"), t("puppiesTitle") || (t("navPuppies") || "Puppies Available"));
+      safeText($("puppiesLead"),  t("puppiesLead")  || "Latest puppy video and updates.");
 
-safeText($("puppiesTitle"), t("puppiesTitle") || (t("navPuppies") || "Puppies Available"));
-safeText($("puppiesLead"),  t("puppiesLead")  || "Latest puppy video and updates.");
-
+      document.title = `KriB Kennel | ${(t("navPuppies") || "Puppies Available")}`;
       document.documentElement.lang = lang;
+
       renderNav();
-      renderDogs();
+      renderPuppies();
     }
 
-    $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
-    $("langES")?.addEventListener("click", () => { localStorage.setItem("lang","es"); applyLang(); });
+    // ===== Language buttons =====
+    $("langEN")?.addEventListener("click", () => {
+      localStorage.setItem("lang","en");
+      applyLang();
+    });
 
+    $("langES")?.addEventListener("click", () => {
+      localStorage.setItem("lang","es");
+      applyLang();
+    });
+
+    // ===== Footer =====
     safeText($("footerBrand"), SITE.brand || "KriB Kennel");
     safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
     safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
-    $("year").textContent = new Date().getFullYear();
+    if ($("year")) $("year").textContent = new Date().getFullYear();
 
+    // ===== First paint =====
     applyLang();
   </script>
 </body>
