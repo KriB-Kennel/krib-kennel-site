@@ -81,7 +81,7 @@ const SITE = {
   // ✅ COMA ARRIBA ARREGLADA + nav correcto
 nav: {
   items: [
-    { href: "./index.html#inicio", labelKey: "navHome", label: "Home" },
+    { href: "./index.html", labelKey: "navHome", label: "Home" },
     { href: "./gallery.html", labelKey: "navGallery", label: "Gallery" },
     { href: "./studs.html", labelKey: "navStuds", label: "Studs" },
     { href: "./females.html", labelKey: "navFemales", label: "Females" },
