@@ -188,8 +188,9 @@ studs:{
     desc: {
     en: "High-energy female puppy with an excellent working attitude. Good angulation and balanced structure. Strong prey drive, making her an excellent prospect for protection and service work.",
     es: "Cachorra con gran energía y excelente actitud de trabajo. Buenas angulaciones y estructura equilibrada. Destaca por su fuerte instinto de presa, siendo una excelente opción para protección y perro de servicio."
-  }
   },
+    img: "./assets/puppies/female1.jpg"
+  }
 
 
   dogs: {
