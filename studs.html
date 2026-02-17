@@ -1,216 +1,300 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>KriB Kennel | Studs</title>
-<meta name="description" content="KriB Kennel Studs & Pedigree." />
+  <title>KriB Kennel | Studs</title>
+  <meta name="description" content="KriB Kennel Studs & Pedigree." />
 
-<link rel="stylesheet" href="./styles.css" />
-<link rel="stylesheet" href="./gold-rain.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./gold-rain.css" />
 </head>
 
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="gold-rain" aria-hidden="true"></div>
 
-<div class="bg"></div>
-<div class="gold-rain"></div>
+  <main class="wrap">
 
-<main class="wrap">
+    <!-- HEADER -->
+    <header class="card header">
+      <button class="navbtn" id="navBtn" type="button" aria-label="Menu">
+        <div class="navicon" aria-hidden="true"><span></span><span></span><span></span></div>
+      </button>
 
-<header class="card header">
-  <button class="navbtn" id="navBtn">
-    <div class="navicon"><span></span><span></span><span></span></div>
-  </button>
+      <img class="logo" id="logo" src="./assets/logo.png" alt="Logo" />
+      <div class="tagline" id="tagline"></div>
 
-  <img class="logo" id="logo" src="./assets/logo.png" alt="Logo">
-  <div class="tagline" id="tagline"></div>
-
-  <div class="lang">
-    <button class="langbtn" id="langEN">EN</button>
-    <button class="langbtn" id="langES">ES</button>
-  </div>
-</header>
-
-<section class="card section">
-  <h2 class="section-title" id="studsTitle">Studs</h2>
-  <p class="section-lead" id="studsLead"></p>
-  <div class="dogs-grid" id="studsGrid"></div>
-</section>
-
-<footer class="footer">
-  <div class="brand" id="footerBrand"></div>
-  <div class="copy">
-    © <span id="year"></span> •
-    <a id="footerLink" href="#" target="_blank">RaymondDevelop</a>
-  </div>
-</footer>
-
-</main>
-
-<script src="./config.js"></script>
-
-<script>
-const $ = (id)=>document.getElementById(id);
-
-function safeText(el,v){ if(el) el.textContent=v??""; }
-function safeHref(el,v){ if(el&&v) el.href=v; }
-function safeSrc(el,v){ if(el&&v) el.src=v; }
-
-Object.entries(SITE.colors||{}).forEach(([k,v])=>{
-  document.documentElement.style.setProperty(`--${k}`,v);
-});
-
-safeSrc($("logo"), SITE.assets?.logo);
-safeText($("tagline"), SITE.header?.tagline);
-
-function getLang(){
-  return localStorage.getItem("lang") || SITE.defaultLang || "en";
-}
-
-function paintLangButtons(lang){
-  $("langEN")?.classList.toggle("active", lang==="en");
-  $("langES")?.classList.toggle("active", lang==="es");
-}
-
-function t(key){
-  const lang=getLang();
-  return SITE.i18n?.[lang]?.[key] ?? SITE.i18n?.en?.[key] ?? null;
-}
-
-function extractYouTubeId(input){
-  if(!input) return "";
-  const s=String(input);
-
-  const a=s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
-  if(a) return a[1];
-
-  const b=s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
-  if(b) return b[1];
-
-  const c=s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
-  if(c) return c[1];
-
-  return "";
-}
-
-function renderStud(){
-
-  const grid=$("studsGrid");
-  if(!grid) return;
-
-  const lang=getLang();
-
-  const items =
-    SITE.studs?.items?.[lang] ||
-    SITE.studs?.items?.en ||
-    [];
-
-  const d = items[0];
-
-  grid.innerHTML="";
-  if(!d) return;
-
-  const card=document.createElement("article");
-  card.className="dog";
-
-  const videoId=extractYouTubeId(d.video || "");
-
-  card.innerHTML = `
-    <img class="dog-img"
-      src="${d.img || ""}"
-      alt="${d.name || ""}"
-      loading="lazy"
-      decoding="async">
-
-    <div class="dog-body">
-
-      <h3 class="dog-name">${d.name || ""}</h3>
-
-      <p class="dog-ped">${d.pedigree || ""}</p>
-
-      <p class="dog-desc">${d.desc || ""}</p>
-
-      ${d.certImg ? `
-        <a href="#" class="mini-link" id="pedLink">
-          Pedigree
-        </a>
-
-        <div class="photo" id="pedWrap" style="display:none;margin-top:10px;">
-          <img src="${d.certImg}" alt="Pedigree Certificate"
-               loading="lazy" decoding="async">
-        </div>
-      ` : ``}
-
-      ${videoId ? `
-      <div class="photo" style="margin-top:14px;">
-        <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
-          <iframe
-            style="position:absolute;inset:0;width:100%;height:100%;border:0;"
-            loading="lazy"
-            allowfullscreen
-src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1"
-          </iframe>
-        </div>
+      <div class="lang">
+        <button class="langbtn" id="langEN" type="button">EN</button>
+        <button class="langbtn" id="langES" type="button">ES</button>
       </div>
-      ` : ""}
+    </header>
 
-    </div>
-  `;
+    <!-- NAV (drawer) -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <aside class="nav-drawer" id="navDrawer" aria-label="Site navigation">
+      <div class="nav-top">
+        <div class="nav-title" id="navTitle">Menu</div>
+        <button class="nav-close" id="navClose" type="button" aria-label="Close">✕</button>
+      </div>
 
-  grid.appendChild(card);
+      <nav class="nav-links" id="navLinks"></nav>
 
-  const pedLink=card.querySelector("#pedLink");
-  const pedWrap=card.querySelector("#pedWrap");
+      <div class="nav-foot">
+        <a class="sbtn primary" id="navCall" href="#">Call</a>
+        <a class="sbtn" id="navWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </aside>
 
-  if(pedLink && pedWrap){
-    pedLink.addEventListener("click",(e)=>{
-      e.preventDefault();
+    <!-- STUDS -->
+    <section class="card section">
+      <h2 class="section-title" id="studsTitle">Studs</h2>
+      <p class="section-lead" id="studsLead"></p>
+      <div class="dogs-grid" id="studsGrid"></div>
+    </section>
 
-      const open = pedWrap.style.display==="none";
-      pedWrap.style.display = open ? "block" : "none";
+    <footer class="footer">
+      <div class="brand" id="footerBrand"></div>
+      <div class="copy">
+        © <span id="year"></span> •
+        <a id="footerLink" href="#" target="_blank" rel="noopener">RaymondDevelop</a>
+      </div>
+    </footer>
 
-      const lang=getLang();
-      pedLink.textContent = open
-        ? (lang==="es" ? "Ocultar certificado" : "Hide certificate")
-        : "Pedigree";
+  </main>
+
+  <!-- STICKY CTA -->
+  <nav class="sticky">
+    <a class="sbtn primary" id="sCall" href="#">Call</a>
+    <a class="sbtn" id="sWhats" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+
+  <script src="./config.js"></script>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    function safeText(el, v){ if(el) el.textContent = v ?? ""; }
+    function safeHref(el, v){ if(el && v) el.href = v; }
+    function safeSrc(el, v){ if(el && v) el.src = v; }
+
+    // Apply CSS vars from config
+    Object.entries(SITE.colors || {}).forEach(([k,v]) => {
+      document.documentElement.style.setProperty(`--${k}`, v);
     });
-  }
-}
 
-function applyLang(){
+    // Header logo + tagline
+    safeSrc($("logo"), SITE.assets?.logo || "./assets/logo.png");
+    if ($("logo")) $("logo").alt = SITE.brand || "Logo";
+    safeText($("tagline"), SITE.header?.tagline || "");
 
-  const lang=getLang();
+    // Contact links
+    const tel1 = SITE.contact?.phone1 || "";
+    const tel1Clean = SITE.contact?.phone1E164 || "";
+    const telHref1 = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
 
-  paintLangButtons(lang);
-  document.documentElement.lang=lang;
+    const wa = SITE.contact?.whatsappE164 || "";
+    const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "Hello, I need information.");
+    const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
 
-  safeText($("tagline"), t("tagline") || "");
-  safeText($("studsTitle"), t("navStuds") || "Males");
-  safeText($("studsLead"), t("studsLead") || "");
+    safeHref($("sCall"), telHref1);
+    safeHref($("sWhats"), waLink);
 
-  renderStud();
-}
+    // Language helpers
+    function getLang(){ return localStorage.getItem("lang") || SITE.defaultLang || "en"; }
+    function paintLangButtons(lang){
+      $("langEN")?.classList.toggle("active", lang === "en");
+      $("langES")?.classList.toggle("active", lang === "es");
+    }
+    function t(key){
+      const lang = getLang();
+      return (SITE.i18n?.[lang]?.[key]) ?? (SITE.i18n?.en?.[key]) ?? null;
+    }
 
-$("langEN")?.addEventListener("click",()=>{
-  localStorage.setItem("lang","en");
-  applyLang();
-});
+    // NAV open/close
+    function openNav(){ document.body.classList.add("nav-open"); }
+    function closeNav(){ document.body.classList.remove("nav-open"); }
+    $("navBtn")?.addEventListener("click", openNav);
+    $("navClose")?.addEventListener("click", closeNav);
+    $("navOverlay")?.addEventListener("click", closeNav);
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeNav(); });
 
-$("langES")?.addEventListener("click",()=>{
-  localStorage.setItem("lang","es");
-  applyLang();
-});
+    function navLabel(item){
+      const key = item.labelKey;
+      if (key && SITE.i18n) return t(key) || item.label || "";
+      return item.label || "";
+    }
 
-safeText($("footerBrand"), SITE.brand);
-safeHref($("footerLink"), SITE.footer?.companyUrl);
-safeText($("footerLink"), SITE.footer?.companyLabel);
-$("year").textContent = new Date().getFullYear();
+    function renderNav(){
+      const nav = $("navLinks");
+      if(!nav) return;
 
-applyLang();
-</script>
+      const items = SITE.nav?.items || [
+        { href: "./index.html", labelKey: "navHome", label: "Home" },
+        { href: "./gallery.html", labelKey: "navGallery", label: "Gallery" },
+        { href: "./studs.html", labelKey: "navStuds", label: "Studs" }
+      ];
 
+      const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+      nav.innerHTML = "";
+
+      items.forEach((it)=>{
+        const a = document.createElement("a");
+        a.href = it.href;
+
+        const targetFile = (it.href.split("#")[0].split("/").pop() || "index.html").toLowerCase();
+        if (targetFile === here) a.classList.add("active");
+
+        a.textContent = navLabel(it);
+        a.addEventListener("click", closeNav);
+        nav.appendChild(a);
+      });
+
+      safeHref($("navCall"), telHref1);
+      safeHref($("navWhats"), waLink);
+      safeText($("navCall"), t("callBtn") || "Call");
+      safeText($("navWhats"), t("waBtn") || "WhatsApp");
+      safeText($("navTitle"), t("navTitle") || "Menu");
+    }
+
+    function extractYouTubeId(input){
+      if(!input) return "";
+      const s = String(input).trim();
+
+      const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+      if (m1) return m1[1];
+
+      const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
+      if (ms) return ms[1];
+
+      const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+      if (m2) return m2[1];
+
+      return "";
+    }
+
+    // STUDS render (ONLY 1) + pedigree toggle
+    function renderStud(){
+      const grid = $("studsGrid");
+      if(!grid) return;
+
+      const lang = getLang();
+      const items =
+        SITE.studs?.items?.[lang] ||
+        SITE.studs?.items?.en ||
+        SITE.studs?.items ||
+        [];
+
+      const d = items[0];
+      grid.innerHTML = "";
+
+      if(!d){
+        grid.innerHTML = `
+          <div class="item">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <div class="it-title">No stud data</div>
+              <div class="it-desc">Add SITE.studs.items in config.js</div>
+            </div>
+          </div>`;
+        return;
+      }
+
+      const card = document.createElement("article");
+      card.className = "dog";
+
+      const videoId = extractYouTubeId(d.video || "");
+
+      // ORDER: photo, name, pedigree, description, certificate, video
+      card.innerHTML = `
+        <img class="dog-img"
+          src="${d.img || "./assets/dogs/placeholder.jpg"}"
+          alt="${d.name || "Stud"}"
+          loading="lazy"
+          decoding="async" />
+
+        <div class="dog-body">
+          <h3 class="dog-name">${d.name || ""}</h3>
+          <p class="dog-ped">${d.pedigree || ""}</p>
+
+          <p class="dog-desc">${d.desc || ""}</p>
+
+          ${d.certImg ? `
+            <a href="#" class="mini-link" id="pedLink">Pedigree</a>
+
+            <div class="photo" id="pedWrap" style="display:none; margin-top:10px;">
+              <img src="${d.certImg}" alt="Pedigree Certificate" loading="lazy" decoding="async" />
+            </div>
+          ` : ``}
+
+          ${videoId ? `
+            <div class="photo" style="margin-top:14px;">
+              <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
+                <iframe
+                  title="Stud Video"
+                  style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1"
+                ></iframe>
+              </div>
+            </div>
+          ` : ""}
+        </div>
+      `;
+
+      grid.appendChild(card);
+
+      const pedLink = card.querySelector("#pedLink");
+      const pedWrap = card.querySelector("#pedWrap");
+      if(pedLink && pedWrap){
+        pedLink.addEventListener("click", (e)=>{
+          e.preventDefault();
+          const open = pedWrap.style.display === "none";
+          pedWrap.style.display = open ? "block" : "none";
+          const langNow = getLang();
+          pedLink.textContent = open
+            ? (langNow === "es" ? "Ocultar certificado" : "Hide certificate")
+            : "Pedigree";
+        });
+      }
+    }
+
+    function applyLang(){
+      const lang = getLang();
+      paintLangButtons(lang);
+      document.documentElement.lang = lang;
+
+      const tagline = t("tagline");
+      if (tagline) safeText($("tagline"), tagline);
+
+      safeText($("studsTitle"), t("navStuds") || "Males");
+      safeText($("studsLead"),  t("studsLead") || "Featured stud with pedigree and description.");
+
+      renderNav();
+      renderStud();
+
+      // keep CTA labels in sync
+      safeText($("sCall"), t("callBtn") || "Call");
+      safeText($("sWhats"), t("waBtn") || "WhatsApp");
+      safeHref($("sCall"), telHref1);
+      safeHref($("sWhats"), waLink);
+    }
+
+    $("langEN")?.addEventListener("click", () => { localStorage.setItem("lang","en"); applyLang(); });
+    $("langES")?.addEventListener("click", () => { localStorage.setItem("lang","es"); applyLang(); });
+
+    safeText($("footerBrand"), SITE.brand || "KriB Kennel");
+    safeHref($("footerLink"), SITE.footer?.companyUrl || "https://www.raymonddevelop.com");
+    safeText($("footerLink"), SITE.footer?.companyLabel || "RaymondDevelop");
+    $("year").textContent = new Date().getFullYear();
+
+    applyLang();
+  </script>
 </body>
 </html>
