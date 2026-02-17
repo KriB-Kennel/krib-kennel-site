@@ -119,6 +119,7 @@ studs:{
         pedigree:"GECH OD STOJKOVICA",
         img:"./assets/dogs/GECH.jpg",
         certImg:"./assets/pedigree/GECH-certificate.jpg",
+        video:"https://youtube.com/shorts/kbCMIuasg4M?si=PCr42WFzs43mrpDt",
         desc:"GECH is an outstanding male known for his stable temperament, strong character, and excellent pigmentation. Certified hips and elbows, he combines quality structure with a balanced, confident nature. Imported from Europe, GECH is available for stud service and represents strong working bloodlines with proven genetics."
       }
     ],
@@ -128,6 +129,7 @@ studs:{
         pedigree:"GECH OD STOJKOVICA",
         img:"./assets/dogs/GECH.jpg",
         certImg:"./assets/pedigree/GECH-certificate.jpg",
+        video:"https://youtube.com/shorts/kbCMIuasg4M?si=PCr42WFzs43mrpDt",
         desc:"GECH es un macho destacado por su temperamento estable, fuerte carácter y excelente pigmentación. Certificado de caderas y codos, combina estructura de calidad con una personalidad equilibrada y segura. Importado de Europa, GECH está disponible para servicio de padrote y representa líneas de trabajo sólidas con genética comprobada."
       }
     ]
