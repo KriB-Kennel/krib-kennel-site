@@ -55,22 +55,6 @@
 <h2 class="section-title" id="puppiesTitle">Puppies Available</h2>
 <p class="section-lead" id="puppiesLead">Latest puppy video and updates.</p>
 
-<!-- VIDEO -->
-<div class="photo" id="videoWrap" style="margin-top:12px;">
-  <div style="position:relative; width:100%; padding-top:56.25%; overflow:hidden; border-radius:inherit;">
-    <iframe
-      id="ytFrame"
-      title="Puppy Video"
-      style="position:absolute; inset:0; width:100%; height:100%; border:0;"
-      loading="lazy"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      src=""
-    ></iframe>
-  </div>
-</div>
-
 <div class="dogs-grid" id="dogsGrid"></div>
 
     </section>
@@ -202,51 +186,97 @@ frame.src = "https://www.youtube-nocookie.com/embed/zyOKxrBLl5o";
 }
 
 
-    // DOGS render (4)
-   function renderDogs(){
+function extractYouTubeId(input){
+  if(!input) return "";
+  const s = String(input).trim();
+
+  // id directo
+  if (/^[a-zA-Z0-9_-]{6,}$/.test(s) && !s.includes("http")) return s;
+
+  // youtu.be/<id>
+  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+  if (m1) return m1[1];
+
+  // youtube.com/shorts/<id>
+  const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
+  if (ms) return ms[1];
+
+  // watch?v=<id>
+  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+  if (m2) return m2[1];
+
+  // /embed/<id>
+  const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);
+  if (m3) return m3[1];
+
+  return "";
+}
+
+function renderPuppies(){
   const grid = $("dogsGrid");
   if(!grid) return;
 
   const lang = getLang();
-  const dogs =
-    SITE.dogs?.items?.[lang] ||
-    SITE.dogs?.items?.en ||
-    SITE.dogs?.items ||
-    [];
 
   const comingTitle = t("comingSoonTitle") || "Coming Soon";
   const comingText  = t("comingSoonText")  || "Updates will be posted here soon.";
 
+  const videoId = extractYouTubeId(SITE.puppiesVideo?.url || "");
+  const videoDesc =
+    SITE.puppiesVideo?.desc?.[lang] ||
+    SITE.puppiesVideo?.desc?.en ||
+    "";
+
   grid.innerHTML = "";
-  dogs.slice(0,4).forEach((d, idx)=>{
+
+  // ===== Card 1: VIDEO + descripción (estilo Females) =====
+  const card1 = document.createElement("article");
+  card1.className = "dog";
+  card1.innerHTML = `
+    <div class="dog-body">
+      <h3 class="dog-name">${t("puppiesVideoTitle") || "Puppy Video"}</h3>
+      <p class="dog-ped">${t("puppiesVideoBadge") || ""}</p>
+
+      <div class="photo" style="margin-top:10px;">
+        <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
+          ${videoId ? `
+            <iframe
+              title="Puppy Video"
+              style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              src="https://www.youtube-nocookie.com/embed/${videoId}"
+            ></iframe>
+          ` : `
+            <div style="padding:14px;">
+              ${comingText}
+            </div>
+          `}
+        </div>
+      </div>
+
+      ${videoDesc ? `<p class="dog-desc" style="margin-top:10px;">${videoDesc}</p>` : ``}
+    </div>
+  `;
+  grid.appendChild(card1);
+
+  // ===== Cards 2–4: Coming Soon =====
+  for(let i=0;i<3;i++){
     const card = document.createElement("article");
     card.className = "dog";
-
-    // ✅ segundo puppy
-    if (idx === 1){
-      card.innerHTML = `
-        <img class="dog-img" src="${d.img || "./assets/dogs/placeholder.jpg"}" alt="${comingTitle}" loading="lazy" decoding="async" />
-        <div class="dog-body">
-          <h3 class="dog-name">${comingTitle}</h3>
-          <p class="dog-ped"></p>
-          <p class="dog-desc">${comingText}</p>
-        </div>
-      `;
-      grid.appendChild(card);
-      return;
-    }
-
     card.innerHTML = `
-      <img class="dog-img" src="${d.img || "./assets/dogs/placeholder.jpg"}" alt="${(d.name||"Puppy")}" loading="lazy" decoding="async" />
       <div class="dog-body">
-        <h3 class="dog-name">${d.name || ""}</h3>
-        <p class="dog-ped">${d.pedigree || ""}</p>
-        <p class="dog-desc">${d.desc || ""}</p>
+        <h3 class="dog-name">${comingTitle}</h3>
+        <p class="dog-ped"></p>
+        <p class="dog-desc">${comingText}</p>
       </div>
     `;
     grid.appendChild(card);
-  });
+  }
 }
+
 
 
     function applyLang(){
@@ -257,12 +287,11 @@ frame.src = "https://www.youtube-nocookie.com/embed/zyOKxrBLl5o";
   if (tagline) safeText($("tagline"), tagline);
 
 
-      safeText($("puppiesTitle"), t("puppiesTitle") || (t("navPuppies") || "Puppies Available"));
+safeText($("puppiesTitle"), t("puppiesTitle") || (t("navPuppies") || "Puppies Available"));
 safeText($("puppiesLead"),  t("puppiesLead")  || "Latest puppy video and updates.");
 
       document.documentElement.lang = lang;
       renderNav();
-      renderVideo();
       renderDogs();
     }
 
