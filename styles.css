@@ -20,10 +20,11 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%
-            background:#000;
+html,body{
+  height:100%;
+  background:#000;
+}
 
-         }
 
 body{
   margin:0;
@@ -655,4 +656,11 @@ body.nav-open .nav-drawer{ transform:translateX(0); }
   line-height:1.6;
   font-size:13px;
 }
+.header{ z-index: 5; }
+.navbtn{ z-index: 6; touch-action: manipulation; }
+.navbtn{
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
 
