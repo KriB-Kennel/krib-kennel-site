@@ -199,12 +199,13 @@ function extractYouTubeId(input){
         return;
       }
 
-      const card = document.createElement("article");
-      card.className = "dog";
-  const videoId = extractYouTubeId(d.video || "");
+    const card = document.createElement("article");
+card.className = "dog";
+
+const videoId = extractYouTubeId(d.video || "");
 
 card.innerHTML = `
-  <img class="dog-img" src="${d.img}" loading="lazy" />
+  <img class="dog-img" src="${d.img || "./assets/dogs/placeholder.jpg"}" alt="${d.name || "Stud"}" loading="lazy" decoding="async" />
 
   <div class="dog-body">
     <h3 class="dog-name">${d.name || ""}</h3>
@@ -217,6 +218,8 @@ card.innerHTML = `
             title="Stud Video"
             style="position:absolute;inset:0;width:100%;height:100%;border:0;"
             loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             src="https://www.youtube-nocookie.com/embed/${videoId}"
           ></iframe>
@@ -225,23 +228,19 @@ card.innerHTML = `
     ` : ""}
 
     <p class="dog-desc">${d.desc || ""}</p>
+
+    ${d.certImg ? `
+      <a href="#" class="mini-link" id="pedLink">${t("pedigreeOpen") || "Pedigree"}</a>
+
+      <div class="photo" id="pedWrap" style="display:none; margin-top:10px;">
+        <img src="${d.certImg}" alt="Pedigree Certificate" loading="lazy" decoding="async" />
+      </div>
+    ` : ``}
   </div>
 `;
 
-          <h3 class="dog-name">${d.name || ""}</h3>
-          <p class="dog-ped">${d.pedigree || ""}</p>
-          <p class="dog-desc">${d.desc || ""}</p>
+grid.appendChild(card);
 
-          ${d.certImg ? `
-            <a href="#" class="mini-link" id="pedLink">${t("pedigreeOpen") || "Pedigree"}</a>
-
-            <div class="photo" id="pedWrap" style="display:none; margin-top:10px;">
-              <img src="${d.certImg}" alt="Pedigree Certificate" loading="lazy" decoding="async" />
-            </div>
-          ` : ``}
-        </div>
-      `;
-      grid.appendChild(card);
 
       const pedLink = card.querySelector("#pedLink");
       const pedWrap = card.querySelector("#pedWrap");
