@@ -157,7 +157,21 @@
       safeText($("navWhats"), t("waBtn") || "WhatsApp");
       safeText($("navTitle"), t("navTitle") || "Menu");
     }
+function extractYouTubeId(input){
+  if(!input) return "";
+  const s = String(input).trim();
 
+  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+  if (m1) return m1[1];
+
+  const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
+  if (ms) return ms[1];
+
+  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+  if (m2) return m2[1];
+
+  return "";
+}
     // STUDS render (ONLY 1) + pedigree toggle
     function renderStud(){
       const grid = $("studsGrid");
@@ -187,10 +201,33 @@
 
       const card = document.createElement("article");
       card.className = "dog";
-      card.innerHTML = `
-        <img class="dog-img" src="${d.img || "./assets/dogs/placeholder.jpg"}" alt="${d.name || "Stud"}" loading="lazy" decoding="async" />
+  const videoId = extractYouTubeId(d.video || "");
 
-        <div class="dog-body">
+card.innerHTML = `
+  <img class="dog-img" src="${d.img}" loading="lazy" />
+
+  <div class="dog-body">
+    <h3 class="dog-name">${d.name || ""}</h3>
+    <p class="dog-ped">${d.pedigree || ""}</p>
+
+    ${videoId ? `
+      <div class="photo" style="margin:10px 0;">
+        <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
+          <iframe
+            title="Stud Video"
+            style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+            loading="lazy"
+            allowfullscreen
+            src="https://www.youtube-nocookie.com/embed/${videoId}"
+          ></iframe>
+        </div>
+      </div>
+    ` : ""}
+
+    <p class="dog-desc">${d.desc || ""}</p>
+  </div>
+`;
+
           <h3 class="dog-name">${d.name || ""}</h3>
           <p class="dog-ped">${d.pedigree || ""}</p>
           <p class="dog-desc">${d.desc || ""}</p>
