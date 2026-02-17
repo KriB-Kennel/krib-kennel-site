@@ -180,18 +180,17 @@ studs:{
   }
 },
 
-  // ===== PUPPIES (YouTube) =====
+    // ===== PUPPIES (YouTube) =====
   puppiesVideo: {
     // Pega aquí el link de YouTube (o solo el ID si quieres)
     url: "https://youtube.com/shorts/zyOKxrBLl5o?si=NI7AbGasIl15-8bj",
     // ejemplo: "https://youtu.be/abc123XYZ"
     desc: {
-    en: "High-energy female puppy with an excellent working attitude. Good angulation and balanced structure. Strong prey drive, making her an excellent prospect for protection and service work.",
-    es: "Cachorra con gran energía y excelente actitud de trabajo. Buenas angulaciones y estructura equilibrada. Destaca por su fuerte instinto de presa, siendo una excelente opción para protección y perro de servicio."
-  },
+      en: "High-energy female puppy with an excellent working attitude. Good angulation and balanced structure. Strong prey drive, making her an excellent prospect for protection and service work.",
+      es: "Cachorra con gran energía y excelente actitud de trabajo. Buenas angulaciones y estructura equilibrada. Destaca por su fuerte instinto de presa, siendo una excelente opción para protección y perro de servicio."
+    },
     img: "./assets/puppies/female1.jpg"
-  }
-
+  },
 
   dogs: {
     items: {
@@ -200,7 +199,7 @@ studs:{
           name: "Dog 1",
           pedigree: "????",
           img: "./assets/dogs/Dog 1.jpg",
-          desc: "  Dog 1 Description.... Ingles "
+          desc: "Dog 1 Description.... English"
         },
         { name: "Dog 2", pedigree: "Pedigree 2", img: "./assets/dogs/dog2.jpg", desc: "Description..." },
         { name: "Dog 3", pedigree: "Pedigree 3", img: "./assets/dogs/dog3.jpg", desc: "Description..." },
@@ -219,6 +218,7 @@ studs:{
       ]
     }
   },
+
 
   // ✅ UN SOLO i18n con TODO junto
   i18n: {
