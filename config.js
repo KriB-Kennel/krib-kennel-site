@@ -183,7 +183,7 @@ studs:{
   // ===== PUPPIES (YouTube) =====
   puppiesVideo: {
     // Pega aquí el link de YouTube (o solo el ID si quieres)
-    url: "https://youtube.com/shorts/zyOKxrBLl5o?si=NI7AbGasIl15-8bj"
+    url: "https://youtube.com/shorts/zyOKxrBLl5o?si=NI7AbGasIl15-8bj",
     // ejemplo: "https://youtu.be/abc123XYZ"
     desc: {
     en: "Add your puppy video description here.",
