@@ -250,7 +250,7 @@ navPuppies:"Puppies Available",
 navPlanned:"Planned Litters",
      
       puppiesTitle: "Puppies Available",
-      puppiesLead: "Latest puppy video and updates.",
+      puppiesLead: "All our puppies come with AKC papers. Vaccinated and dewormed.",
 
       comingSoonTitle: "Coming Soon",
       comingSoonText: "Updates will be posted here soon.",
@@ -300,7 +300,7 @@ navPuppies:"Cachorros Disponibles",
 navPlanned:"Camadas Planificadas",
 
             puppiesTitle: "Cachorros Disponibles",
-      puppiesLead: "Video de cachorro y actualizaciones.",
+      puppiesLead: "Todos nuestros cachorros se entregan con papeles AKC. Vacunados y desparacitados",
 
       comingSoonTitle: "Próximamente",
       comingSoonText: "Pronto publicaremos actualizaciones aquí.",
