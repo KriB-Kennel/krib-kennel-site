@@ -164,15 +164,32 @@
       safeText($("navWhats"), t("waBtn") || "WhatsApp");
       safeText($("navTitle"), t("navTitle") || "Menu");
     }
-    function extractYouTubeId(input){
+   function extractYouTubeId(input){
   if(!input) return "";
   const s = String(input).trim();
+
+  // id directo
   if (/^[a-zA-Z0-9_-]{6,}$/.test(s) && !s.includes("http")) return s;
-  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/); if (m1) return m1[1];
-  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);      if (m2) return m2[1];
-  const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);   if (m3) return m3[1];
+
+  // youtu.be/<id>
+  const m1 = s.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+  if (m1) return m1[1];
+
+  // youtube.com/shorts/<id>
+  const ms = s.match(/\/shorts\/([a-zA-Z0-9_-]+)/);
+  if (ms) return ms[1];
+
+  // watch?v=<id>
+  const m2 = s.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+  if (m2) return m2[1];
+
+  // /embed/<id>
+  const m3 = s.match(/\/embed\/([a-zA-Z0-9_-]+)/);
+  if (m3) return m3[1];
+
   return "";
 }
+
 
 function renderVideo(){
   const frame = $("ytFrame");
