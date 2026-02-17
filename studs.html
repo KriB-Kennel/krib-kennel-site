@@ -1,33 +1,31 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>KriB Kennel | Studs</title>
-  <meta name="description" content="KriB Kennel Studs & Pedigree." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet">
+<title>KriB Kennel | Studs</title>
+<meta name="description" content="KriB Kennel Studs & Pedigree." />
 
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="./gold-rain.css" />
+<link rel="stylesheet" href="./styles.css" />
+<link rel="stylesheet" href="./gold-rain.css" />
 </head>
 
 <body>
-<div class="bg" aria-hidden="true"></div>
-<div class="gold-rain" aria-hidden="true"></div>
+
+<div class="bg"></div>
+<div class="gold-rain"></div>
 
 <main class="wrap">
 
 <header class="card header">
-  <button class="navbtn" id="navBtn" type="button" aria-label="Menu">
+  <button class="navbtn" id="navBtn">
     <div class="navicon"><span></span><span></span><span></span></div>
   </button>
 
-  <img class="logo" id="logo" src="./assets/logo.png" alt="Logo" />
+  <img class="logo" id="logo" src="./assets/logo.png" alt="Logo">
   <div class="tagline" id="tagline"></div>
 
   <div class="lang">
@@ -35,19 +33,6 @@
     <button class="langbtn" id="langES">ES</button>
   </div>
 </header>
-
-<div class="nav-overlay" id="navOverlay"></div>
-<aside class="nav-drawer" id="navDrawer">
-  <div class="nav-top">
-    <div class="nav-title" id="navTitle">Menu</div>
-    <button class="nav-close" id="navClose">✕</button>
-  </div>
-  <nav class="nav-links" id="navLinks"></nav>
-  <div class="nav-foot">
-    <a class="sbtn primary" id="navCall" href="#">Call</a>
-    <a class="sbtn" id="navWhats" href="#">WhatsApp</a>
-  </div>
-</aside>
 
 <section class="card section">
   <h2 class="section-title" id="studsTitle">Studs</h2>
@@ -65,11 +50,6 @@
 
 </main>
 
-<nav class="sticky">
-  <a class="sbtn primary" id="sCall" href="#">Call</a>
-  <a class="sbtn" id="sWhats" href="#">WhatsApp</a>
-</nav>
-
 <script src="./config.js"></script>
 
 <script>
@@ -86,27 +66,19 @@ Object.entries(SITE.colors||{}).forEach(([k,v])=>{
 safeSrc($("logo"), SITE.assets?.logo);
 safeText($("tagline"), SITE.header?.tagline);
 
-const tel1 = SITE.contact?.phone1 || "";
-const tel1Clean = SITE.contact?.phone1E164 || "";
-const telHref = `tel:${tel1Clean || tel1.replace(/[^0-9+]/g,"")}`;
+function getLang(){
+  return localStorage.getItem("lang") || SITE.defaultLang || "en";
+}
 
-const wa = SITE.contact?.whatsappE164 || "";
-const waMsg = encodeURIComponent(SITE.contact?.whatsappMessage || "");
-const waLink = wa ? `https://wa.me/${wa}?text=${waMsg}` : "#";
-
-safeHref($("sCall"), telHref);
-safeHref($("sWhats"), waLink);
-
-function getLang(){ return localStorage.getItem("lang") || SITE.defaultLang || "en"; }
+function paintLangButtons(lang){
+  $("langEN")?.classList.toggle("active", lang==="en");
+  $("langES")?.classList.toggle("active", lang==="es");
+}
 
 function t(key){
   const lang=getLang();
   return SITE.i18n?.[lang]?.[key] ?? SITE.i18n?.en?.[key] ?? null;
 }
-
-$("navBtn")?.addEventListener("click",()=>document.body.classList.add("nav-open"));
-$("navClose")?.addEventListener("click",()=>document.body.classList.remove("nav-open"));
-$("navOverlay")?.addEventListener("click",()=>document.body.classList.remove("nav-open"));
 
 function extractYouTubeId(input){
   if(!input) return "";
@@ -125,12 +97,18 @@ function extractYouTubeId(input){
 }
 
 function renderStud(){
+
   const grid=$("studsGrid");
   if(!grid) return;
 
   const lang=getLang();
-  const items=SITE.studs?.items?.[lang] || SITE.studs?.items?.en || [];
-  const d=items[0];
+
+  const items =
+    SITE.studs?.items?.[lang] ||
+    SITE.studs?.items?.en ||
+    [];
+
+  const d = items[0];
 
   grid.innerHTML="";
   if(!d) return;
@@ -145,7 +123,7 @@ function renderStud(){
       src="${d.img || ""}"
       alt="${d.name || ""}"
       loading="lazy"
-      decoding="async" />
+      decoding="async">
 
     <div class="dog-body">
 
@@ -157,20 +135,19 @@ function renderStud(){
 
       ${d.certImg ? `
         <a href="#" class="mini-link" id="pedLink">
-          ${t("pedigreeOpen") || "Pedigree certificado"}
+          Pedigree
         </a>
 
         <div class="photo" id="pedWrap" style="display:none;margin-top:10px;">
           <img src="${d.certImg}" alt="Pedigree Certificate"
-            loading="lazy" decoding="async" />
+               loading="lazy" decoding="async">
         </div>
       ` : ``}
 
       ${videoId ? `
-      <div class="photo" style="margin:14px 0 0;">
+      <div class="photo" style="margin-top:14px;">
         <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:inherit;">
           <iframe
-            title="Stud Video"
             style="position:absolute;inset:0;width:100%;height:100%;border:0;"
             loading="lazy"
             allowfullscreen
@@ -185,23 +162,35 @@ function renderStud(){
 
   grid.appendChild(card);
 
-  const pedLink = card.querySelector("#pedLink");
-  const pedWrap = card.querySelector("#pedWrap");
+  const pedLink=card.querySelector("#pedLink");
+  const pedWrap=card.querySelector("#pedWrap");
 
   if(pedLink && pedWrap){
     pedLink.addEventListener("click",(e)=>{
       e.preventDefault();
+
       const open = pedWrap.style.display==="none";
       pedWrap.style.display = open ? "block" : "none";
-      pedLink.textContent = open ? "Hide pedigree" : "Pedigree certificado";
+
+      const lang=getLang();
+      pedLink.textContent = open
+        ? (lang==="es" ? "Ocultar certificado" : "Hide certificate")
+        : "Pedigree";
     });
   }
 }
 
 function applyLang(){
+
+  const lang=getLang();
+
+  paintLangButtons(lang);
+  document.documentElement.lang=lang;
+
+  safeText($("tagline"), t("tagline") || "");
   safeText($("studsTitle"), t("navStuds") || "Males");
   safeText($("studsLead"), t("studsLead") || "");
-  safeText($("tagline"), t("tagline") || "");
+
   renderStud();
 }
 
