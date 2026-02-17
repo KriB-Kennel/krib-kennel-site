@@ -199,6 +199,8 @@
         SITE.puppiesVideo?.desc?.[lang] ||
         SITE.puppiesVideo?.desc?.en ||
         "";
+      const videoImg = SITE.puppiesVideo?.img || "";
+
 
       grid.innerHTML = "";
 
@@ -228,7 +230,14 @@
             </div>
           </div>
 
-          ${videoDesc ? `<p class="dog-desc" style="margin-top:10px;">${videoDesc}</p>` : ``}
+${videoDesc ? `<p class="dog-desc" style="margin-top:10px;">${videoDesc}</p>` : ``}
+
+${videoImg ? `
+  <div class="photo" style="margin-top:10px;">
+    <img src="${videoImg}" alt="Puppy photo" loading="lazy" decoding="async" />
+  </div>
+` : ``}
+          
         </div>
       `;
       grid.appendChild(card1);
