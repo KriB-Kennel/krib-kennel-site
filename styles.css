@@ -662,5 +662,11 @@ body.nav-open .nav-drawer{ transform:translateX(0); }
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
+.photo a img{
+  transition:transform .25s ease;
+}
+.photo a:hover img{
+  transform:scale(1.02);
+}
 
 
